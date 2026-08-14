@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Humanoid Avatar — particle demo</title>
+<style>
+  html, body { margin:0; height:100%; background:#05070c; overflow:hidden; font-family:-apple-system,system-ui,sans-serif; }
+  canvas { display:block; }
+  .hud { position:fixed; bottom:18px; left:50%; transform:translateX(-50%); display:flex; gap:10px; z-index:2; }
+  button {
+    background:rgba(20,30,50,.7); color:#9fd7ff; border:1px solid #1e3a5a; border-radius:999px;
+    padding:9px 18px; font-size:14px; cursor:pointer; backdrop-filter:blur(6px);
+  }
+  button:hover { background:rgba(30,50,80,.9); }
+  .tag { position:fixed; top:16px; left:50%; transform:translateX(-50%); color:#3f6a8f; font-size:12px; letter-spacing:.2em; text-transform:uppercase; z-index:2; }
+  .caption { position:fixed; bottom:70px; left:50%; transform:translateX(-50%); color:#e8f4ff; font-size:16px; z-index:2; text-shadow:0 2px 8px #000; opacity:0; transition:opacity .3s; }
+</style>
+</head>
+<body>
+<div class="tag">NEXUS · HUMANOID VIEW</div>
+<div class="caption" id="caption"></div>
+<canvas id="c"></canvas>
+<div class="hud">
+  <button onclick="assemble()">Open humanoid view</button>
+  <button onclick="ask()">Ask: “How are you?”</button>
+  <button onclick="disperse()">Disperse</button>
+</div>
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+let W, H, cx, cy, scale;
+function resize() {
+  W = canvas.width = innerWidth * devicePixelRatio;
+  H = canvas.height = innerHeight * devicePixelRatio;
+  canvas.style.width = innerWidth + 'px';
+  canvas.style.height = innerHeight + 'px';
+  cx = W/2; cy = H*0.46; scale = Math.min(W, H) / 900;
+}
+resize(); addEventListener('resize', resize);
+
+// --- Build silhouette targets by sampling an offscreen drawing ---
+function silhouettePoints(n) {
+  const off = document.createElement('canvas');
+  const s = 400; off.width = s; off.height = s;
+  const o = off.getContext('2d');
+  o.fillStyle = '#fff';
+  // head
+  o.beginPath(); o.ellipse(s/2, s*0.30, s*0.115, s*0.15, 0, 0, Math.PI*2); o.fill();
+  // neck
+  o.fillRect(s*0.455, s*0.42, s*0.09, s*0.09);
+  // shoulders / torso dome
+  o.beginPath();
+  o.moveTo(s*0.13, s*0.95);
+  o.bezierCurveTo(s*0.14, s*0.62, s*0.32, s*0.50, s*0.5, s*0.50);
+  o.bezierCurveTo(s*0.68, s*0.50, s*0.86, s*0.62, s*0.87, s*0.95);
+  o.closePath(); o.fill();
+  const img = o.getImageData(0, 0, s, s).data;
+  const pts = [];
+  let guard = 0;
+  while (pts.length < n && guard++ < n*300) {
+    const x = Math.random()*s, y = Math.random()*s;
+    const a = img[(((y|0)*s) + (x|0))*4 + 3];
+    if (a > 128) {
+      // bias toward contour-band look: keep rows in stripes
+      if (((y*0.5)|0) % 2 === 0 || Math.random() < 0.25) {
+        pts.push({ x:(x - s/2)/s, y:(y - s*0.55)/s });
+      }
+    }
+  }
+  return pts;
+}
+
+const N = 4200;
+const targets = silhouettePoints(N);
+const parts = targets.map(t => ({
+  tx:t.x, ty:t.y,
+  x:(Math.random()-0.5)*2.4, y:(Math.random()-0.5)*2.4,
+  vx:0, vy:0,
+  seed:Math.random()*Math.PI*2,
+  faceDist:Math.hypot(t.x, t.y+0.25)  // distance from face center
+}));
+
+let mode = 'dispersed';       // dispersed | assembling | idle | speaking
+let speakEnv = 0;             // 0..1 amplitude envelope while speaking
+let rings = [];               // ripple rings
+const bootTime = Date.now();
+
+function assemble(){ mode = 'assembling'; showCaption('Opening the humanoid view'); }
+function disperse(){ mode = 'dispersed'; showCaption(''); }
+
+function showCaption(text){
+  const el = document.getElementById('caption');
+  el.textContent = text; el.style.opacity = text ? 1 : 0;
+  if (text) setTimeout(() => { if (el.textContent === text) el.style.opacity = 0; }, 3500);
+}
+
+function ask(){
+  if (mode === 'dispersed') assemble();
+  const upMin = Math.floor((Date.now() - bootTime)/60000);
+  const upSec = Math.floor((Date.now() - bootTime)/1000) % 60;
+  const line = `I'm running. Up ${upMin} minutes ${upSec} seconds since deploy.`;
+  showCaption(line);
+  const u = new SpeechSynthesisUtterance(line);
+  u.rate = 0.95; u.pitch = 0.8;
+  u.onstart = () => { mode = 'speaking'; };
+  u.onend = () => { mode = 'idle'; speakEnv = 0; };
+  speechSynthesis.cancel(); speechSynthesis.speak(u);
+}
+
+function draw(){
+  requestAnimationFrame(draw);
+  const t = performance.now()/1000;
+  ctx.fillStyle = 'rgba(5,7,12,0.35)';
+  ctx.fillRect(0, 0, W, H);
+  ctx.globalCompositeOperation = 'lighter';
+
+  // speech envelope: pseudo-random voice amplitude
+  if (mode === 'speaking') {
+    speakEnv += ((0.4 + 0.6*Math.abs(Math.sin(t*7.3) * Math.sin(t*3.1))) - speakEnv) * 0.2;
+    if (Math.random() < 0.06) rings.push({ r: 60*scale, a: 0.5 });
+  } else {
+    speakEnv *= 0.94;
+  }
+
+  // ripple rings around the head
+  const headY = cy - 210*scale*0.55*2*0.55; // approximate head center
+  for (let i = rings.length-1; i >= 0; i--) {
+    const g = rings[i];
+    g.r += 2.4*scale + speakEnv*2*scale; g.a *= 0.965;
+    if (g.a < 0.02) { rings.splice(i,1); continue; }
+    ctx.beginPath();
+    ctx.strokeStyle = `rgba(90,190,255,${g.a})`;
+    ctx.lineWidth = 1.2*scale;
+    ctx.arc(cx, cy - 150*scale, g.r, 0, Math.PI*2);
+    ctx.stroke();
+  }
+
+  const S = 560*scale; // figure scale
+  for (const p of parts) {
+    let ax = 0, ay = 0;
+    if (mode === 'dispersed') {
+      ax = (Math.sin(p.seed + t*0.7))*0.0006 + (Math.random()-0.5)*0.0008;
+      ay = (Math.cos(p.seed*1.3 + t*0.6))*0.0006 + (Math.random()-0.5)*0.0008;
+    } else {
+      // spring toward target with per-particle flow wobble
+      const wob = 0.006*Math.sin(t*1.6 + p.seed*4) * (mode==='speaking' ? 1 + speakEnv*2.5 : 1);
+      const dx = (p.tx + wob*Math.sin(p.seed)) - p.x;
+      const dy = (p.ty + wob*Math.cos(p.seed)) - p.y;
+      ax = dx * 0.012; ay = dy * 0.012;
+    }
+    p.vx = (p.vx + ax) * 0.92;
+    p.vy = (p.vy + ay) * 0.92;
+    p.x += p.vx; p.y += p.vy;
+
+    const px = cx + p.x * S;
+    const py = cy + p.y * S + 40*scale;
+
+    // face glows orange, body cyan-blue; brightness pulses on speech
+    const face = Math.max(0, 1 - p.faceDist*3.2);
+    const pulse = 0.65 + 0.35*Math.sin(t*2 + p.seed*6) + speakEnv*0.5;
+    let r, g, b;
+    if (face > 0.4) { r = 255; g = 140 + face*60; b = 30; }
+    else { r = 40; g = 150 + 60*pulse; b = 255; }
+    const alpha = (0.25 + 0.5*pulse) * (mode==='dispersed' ? 0.35 : 1) * Math.min(1, face>0.4 ? face*1.6 : 0.9);
+    ctx.fillStyle = `rgba(${r|0},${g|0},${b|0},${alpha})`;
+    const size = (face > 0.4 ? 2.2 : 1.5) * scale * (1 + speakEnv*0.4);
+    ctx.fillRect(px, py, size, size);
+  }
+  ctx.globalCompositeOperation = 'source-over';
+}
+draw();
+</script>
+</body>
+</html>
