@@ -4,7 +4,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this project is
 
-A free, interactive study guide for Anthropic's **Claude Certified Architect – Foundations (CCA-F)** exam, built from Sangam's 977/1000 pass experience. It is a **static HTML site** (no framework decided yet, no backend, no login) that will eventually deploy to Vercel on a divingsbysangam.com subdomain. Development has **not started** — the project is in the requirements/design phase, and work is ticketed in Linear to be taken one ticket at a time.
+A free, interactive study guide for Anthropic's **Claude Certified Architect – Foundations (CCA-F)** exam, built from Sangam's 977/1000 pass experience. It is a **static HTML site** — vanilla HTML/CSS/JS, no framework, no build step, no backend, no login. v1 is built and **live at https://ccaf-interactive-guide.vercel.app**; work is ticketed in Linear.
+
+## Repo, deploy, and dev loop
+
+- **GitHub:** `divingsbysangam/ccaf-interactive-guide` (private). Local `origin` points there. Note the account: the Vercel team is connected to the `divingsbysangam` GitHub login, not the `gellasangameshgupta` CLI identity that authors commits — that's fine, just don't move the repo.
+- **Vercel:** project `ccaf-interactive-guide` in team "Sangamesh Gella's projects", git-linked, production branch `main`. **Every push to `main` auto-deploys** — there is no separate deploy step. Static output, root directory, no framework.
+- **Dev loop:** edit files, open `index.html` directly in a browser (or regenerate `demos/scaffold-preview.html`, a single-file bundle of index+css+js used for the in-app preview pane, which cannot load external files). Verify with the Node smoke harness (see below), then commit and push.
+- **Structure:** `index.html` (shell + hero) · `css/main.css` (design tokens + all styling) · `js/particles.js` (ambient layer, `CCAF_FX`) · `js/content.js` (ALL content as data: `CCAF_CARDS`, `CCAF_DRILLS`, `CCAF_MOCK_SAMPLES`, `CCAF_MOCK_LINKS`, `CCAF_STORY`) · `js/app.js` (hash router, card/quiz engines, localStorage progress). Content edits almost always mean editing `js/content.js` only.
 
 ## Source of truth
 
@@ -40,4 +47,13 @@ The guide's look is a **subtle ambient particle system** (plan R16). Reference i
 
 * Inputs still owed by Sangam (tickets labeled `needs-sangam`): hero story + blocker narratives (DIV-25, post-launch content — a placeholder hero ships in v1), subdomain choice.
 
-There are no build, lint, or test commands yet — the site is static files opened directly in a browser. Add commands here if tooling is introduced.
+## Commands
+
+No build or lint step. Two Node scripts, both run from the repo root:
+
+```bash
+node scripts/smoke-test.js "$PWD"    # run after any change to js/ — asserts routing, cards, drills, progress, hostile-localStorage safety
+node scripts/build-preview.js        # run after any change to index.html/css/js — regenerates demos/scaffold-preview.html
+```
+
+The smoke test stubs the DOM and drives `js/app.js` through its public `window.CCAF` surface (`steps`, `storage`, `progressOf`, `toggleCard`); extend it when adding features. Commit the regenerated preview bundle alongside the change.
