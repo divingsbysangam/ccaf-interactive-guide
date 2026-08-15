@@ -4,12 +4,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this project is
 
-A free, interactive study guide for Anthropic's **Claude Certified Architect – Foundations (CCA-F)** exam, built from Sangam's 977/1000 pass experience. It is a **static HTML site** — vanilla HTML/CSS/JS, no framework, no build step, no backend, no login. v1 is built and **live at https://ccaf-interactive-guide.vercel.app**; work is ticketed in Linear.
+A free, interactive study guide for Anthropic's **Claude Certified Architect – Foundations (CCA-F)** exam, built from Sangam's 977/1000 pass experience. It is a **static HTML site** — vanilla HTML/CSS/JS, no framework, no build step, no backend, no login. v1 is built and **live at https://ccaf-guide.divingsbysangam.com** (Vercel alias: ccaf-interactive-guide.vercel.app); work is ticketed in Linear.
 
 ## Repo, deploy, and dev loop
 
 - **GitHub:** `divingsbysangam/ccaf-interactive-guide` (private). Local `origin` points there. Note the account: the Vercel team is connected to the `divingsbysangam` GitHub login, not the `gellasangameshgupta` CLI identity that authors commits — that's fine, just don't move the repo.
-- **Vercel:** project `ccaf-interactive-guide` in team "Sangamesh Gella's projects", git-linked, production branch `main`. **Every push to `main` auto-deploys** — there is no separate deploy step. Static output, root directory, no framework.
+- **Vercel:** project `ccaf-interactive-guide` in team "Sangamesh Gella's projects", git-linked, production branch `main`. **Every push to `main` auto-deploys** — there is no separate deploy step. Static output, root directory, no framework. Commits must be authored as `divingsbysangam <sangameshgella@divingsbysangam.com>` (set repo-locally in `.git/config`) or Vercel blocks the git-triggered deploy.
+- **Domain:** `ccaf-guide.divingsbysangam.com` — CNAME on Cloudflare DNS pointing at Vercel, Cloudflare proxy OFF (grey cloud). Keep it off; Vercel handles TLS and edge. The `vercel` CLI on this machine is logged into a *different* Vercel account — use the dashboard or the MCP for this project, not the CLI.
 - **Dev loop:** edit files, open `index.html` directly in a browser (or regenerate `demos/scaffold-preview.html`, a single-file bundle of index+css+js used for the in-app preview pane, which cannot load external files). Verify with the Node smoke harness (see below), then commit and push.
 - **Structure:** `index.html` (shell + hero) · `css/main.css` (design tokens + all styling) · `js/particles.js` (ambient layer, `CCAF_FX`) · `js/content.js` (ALL content as data: `CCAF_CARDS`, `CCAF_DRILLS`, `CCAF_MOCK_SAMPLES`, `CCAF_MOCK_LINKS`, `CCAF_STORY`) · `js/app.js` (hash router, card/quiz engines, localStorage progress). Content edits almost always mean editing `js/content.js` only.
 
