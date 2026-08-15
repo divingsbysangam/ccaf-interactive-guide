@@ -178,9 +178,55 @@
   // ---------- rendering ----------
   const view = document.getElementById('view');
   const hero = document.getElementById('hero');
+  const story = window.CCAF_STORY || { hero: null, waypoints: [] };
+
+  function renderStory() {
+    const el = document.getElementById('story');
+    if (!el || !story.hero) return;
+    el.innerHTML = `
+      <p>${story.hero.lead}</p>
+      <p>${story.hero.why}</p>
+      <p>${story.hero.result}</p>
+      <p class="story-sign">— Sangam</p>`;
+  }
+
+  /* first unread thing across the journey: for "Continue →" (R17) */
+  function nextUp() {
+    for (const s of STEPS) {
+      const p = progressOf(s.id);
+      if (p.state !== 'done') return s;
+    }
+    return null;
+  }
+
+  function renderHeroCTA() {
+    const el = document.getElementById('hero-cta');
+    if (!el) return;
+    const anyProgress = STEPS.some((s) => progressOf(s.id).state !== 'new');
+    const next = nextUp();
+    if (!anyProgress) {
+      el.innerHTML = `<a class="btn" href="#/step/blueprint">Start with the Blueprint</a>`;
+    } else if (next) {
+      el.innerHTML = `<a class="btn" href="#/step/${next.id}">Continue → ${next.title}</a>`;
+    } else {
+      el.innerHTML = `<a class="btn" href="#/step/mock">All five steps done — book your exam</a>`;
+    }
+  }
+
+  function waypointHTML(stepId) {
+    const w = story.waypoints.find((x) => x.stepId === stepId);
+    if (!w) return '';
+    return `
+    <aside class="waypoint">
+      <p class="wp-kicker">From Sangam's journey</p>
+      <h3>${w.title}</h3>
+      <p>${w.body}</p>
+    </aside>`;
+  }
 
   function renderMap() {
     hero.classList.remove('compact');
+    renderHeroCTA();
     const items = STEPS.map((s) => {
       const p = progressOf(s.id);
       return `
@@ -295,6 +341,7 @@
           <span class="step-prog" id="step-prog">${(cards.length || questionsFor(step.id).length) ? progressLabel(p) : ''}</span>
         </div>
         <p class="lede">${step.lede}</p>
+        ${waypointHTML(step.id)}
         ${body}
         <div class="step-nav">
           ${prev ? `<a class="btn ghost" href="#/step/${prev.id}">← ${prev.title}</a>` : `<a class="btn ghost" href="#/">← Journey map</a>`}
@@ -397,6 +444,7 @@
   }
 
   addEventListener('hashchange', () => { routeHash = location.hash; render(); });
+  renderStory();
   render();
 
   // small public surface for later tickets and tests

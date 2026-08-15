@@ -45,6 +45,30 @@ body {
 .hero-cta { text-align: center; margin: 26px 0 0; }
 .hero.compact { display: none; } /* hero hides on step pages */
 
+/* hero story (DIV-25) */
+.story {
+  max-width: 620px; margin: 34px auto 0; padding: 26px 28px;
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  backdrop-filter: blur(4px);
+}
+.story p { color: var(--ink); font-size: 15px; line-height: 1.65; }
+.story p + p { margin-top: 14px; }
+.story strong { color: #ffd98f; font-weight: 600; }
+.story em { color: #cfe6ff; }
+.story-sign { color: var(--ink-faint) !important; font-size: 13px !important; text-align: right; margin-top: 16px !important; }
+
+/* blocker waypoints inside steps (DIV-25) */
+.waypoint {
+  margin: 26px 0 8px; padding: 20px 22px;
+  border-left: 3px solid var(--gold); border-radius: 0 12px 12px 0;
+  background: rgba(90, 65, 20, 0.14);
+}
+.wp-kicker { font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: #c9a35a; }
+.waypoint h3 { font-size: 15.5px; color: #ffe9b8; font-weight: 600; margin-top: 6px; }
+.waypoint p:not(.wp-kicker) { margin-top: 8px; color: #d9c08a; font-size: 14px; line-height: 1.6; }
+.waypoint strong { color: #ffd98f; }
+.waypoint em { color: #ffe9b8; font-style: italic; }
+
 .btn {
   display: inline-block; padding: 11px 22px; border-radius: 999px;
   color: #06121f; text-decoration: none; font-weight: 600; font-size: 14.5px;

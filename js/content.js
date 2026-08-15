@@ -525,6 +525,62 @@ window.CCAF_CARDS = {
   ],
 };
 
+/* Hero story + blocker waypoints (DIV-25) — Sangam's words, edited for length.
+   Waypoints render inside the step they belong to (stepId), above the cards. */
+window.CCAF_STORY = {
+  hero: {
+    lead: `I'm a Salesforce consultant with development experience. By the time CCA-F was
+      announced I'd spent two years building outside my platform — OpenAI and Claude APIs
+      from 2023, then Claude Code in the terminal, custom MCP servers, sales-report MCPs,
+      agentic solutions wired into Google Chat and Teams, experiments with CrewAI and
+      Cursor. I felt ready. I was also wrong about what the exam would be.`,
+    why: `I didn't sit CCA-F to stay a developer. I still love building — but I wanted to
+      understand a platform's <em>system</em>: how it operates, where its limits are, and
+      how that differs from Salesforce's multitenant world. No other system mirrors
+      Salesforce; each has its own architecture, tools, and conventions, and those are the
+      things only an architect can teach a peer.`,
+    result: `Scored <strong>977/1000</strong>. The real result was quieter than the number:
+      the relief of seeing that it isn't <em>only</em> Salesforce I can build on — any system
+      I can understand, I can build with Claude Code. That's what this guide is for. Whatever
+      platform you're coming from, everyone starts in the same boat. This is a
+      <strong>"you can do it"</strong> guide, not an "I did it" one.`,
+  },
+  waypoints: [
+    {
+      stepId: 'blueprint',
+      title: 'Blocker 1 — "Are there enough good sources?"',
+      body: `Less of a wall than I expected — the official courses were more than enough for the
+        basics, and I ran a peer-group prep in two phases (Claude Code for building, then Claude
+        Code for agentic work), teaching MCP sessions internally along the way. What no course
+        gave me was the <strong>hands-on</strong>: build something real before you sit the exam.
+        The blueprint tells you <em>what</em>; only building tells you <em>how it actually
+        behaves</em>. That's why this guide has a Labs step and not just reading.`,
+    },
+    {
+      stepId: 'reading',
+      title: 'Blocker 2 — the mindset shift, and the day the questions changed',
+      body: `Crossing from CRM thinking to agent-native architecture was the hardest part —
+        and I hadn't been "prepping" at all; there was never a moment I thought "I'll take the
+        exam." I'd just been building since 2023. That accidental practice was what made the
+        concepts click. Then the exam itself moved the goalposts: <strong>the scenarios were
+        framed nothing like where I'd come from</strong>. Every question was a situation, never
+        a definition. The "how the exam twists this" lane on every card below exists because
+        of that day.`,
+    },
+    {
+      stepId: 'drills',
+      title: 'Blocker 3 — the terminology and limitations wall',
+      body: `Salesforce has one glossary; you memorize it once. Here you're not learning one
+        system, you're building across many — MCP, the Agent SDK, context engineering, context
+        loading, skills — and each brings its own vocabulary and its own limits that matter in
+        practice. What made it stick was building with all of them: <em>Lumi</em>, my family
+        co-pilot; <em>Nexus</em>, my chief of staff; <em>Sift</em>, an MCP server for my email;
+        and <em>Sott</em>, a local-model app anyone can run on their own machine. All heading
+        open source. Build, learn, then crack CCA-F — that's the whole method.`,
+    },
+  ],
+};
+
 /* Labs: build-it-yourself missions (DIV-28). Same card mechanics, different lanes:
    quick = the mission brief, lane 1 = outline, lane 2 = self-check.
    minutes here = rough build effort, not reading time. */
