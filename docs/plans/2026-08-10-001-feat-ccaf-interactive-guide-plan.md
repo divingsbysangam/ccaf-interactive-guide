@@ -131,7 +131,7 @@ flowchart TB
 
   * **Trigger:** Quarter boundary or a major Anthropic release.
 
-  * **<span data-proof="authored" data-by="ai:claude">Steps:</span>** <span data-proof="authored" data-by="ai:claude">Maintainer runs the checklist → updates affected cards, drills, and links → bumps the "last verified" date → redeploys.</span>
+  * **Steps:** Maintainer runs the checklist → updates affected cards, drills, and links → bumps the "last verified" date → redeploys.
 
   * **Covers:** R15.
 

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="CCA-F Interactive Guide">
+  <!-- The journey constellation: five steps rising, the last one lit gold. -->
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="20%" r="85%">
+      <stop offset="0" stop-color="#132038"/>
+      <stop offset="0.6" stop-color="#0a1120"/>
+      <stop offset="1" stop-color="#05070d"/>
+    </radialGradient>
+    <radialGradient id="blue" cx="35%" cy="30%" r="70%">
+      <stop offset="0" stop-color="#c8e8ff"/>
+      <stop offset="0.55" stop-color="#4aa3e8"/>
+      <stop offset="1" stop-color="#1d5a94"/>
+    </radialGradient>
+    <radialGradient id="gold" cx="35%" cy="30%" r="70%">
+      <stop offset="0" stop-color="#ffe9b8"/>
+      <stop offset="0.55" stop-color="#f0b34a"/>
+      <stop offset="1" stop-color="#a06614"/>
+    </radialGradient>
+    <filter id="glowB" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="1.6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glowG" x="-120%" y="-120%" width="340%" height="340%">
+      <feGaussianBlur stdDeviation="2.4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
+
+  <!-- faint ambient dust -->
+  <g fill="#8cc3ff" opacity="0.28">
+    <circle cx="14" cy="16" r="0.9"/>
+    <circle cx="50" cy="48" r="0.9"/>
+    <circle cx="26" cy="22" r="0.6"/>
+    <circle cx="44" cy="52" r="0.6"/>
+    <circle cx="55" cy="36" r="0.7"/>
+  </g>
+
+  <!-- the path -->
+  <path d="M13 47 Q 33 40 53 17" fill="none" stroke="#5db0f5" stroke-opacity="0.38" stroke-width="1.6" stroke-linecap="round"/>
+
+  <!-- steps 1–4 -->
+  <g filter="url(#glowB)">
+    <circle cx="13" cy="47" r="3.3" fill="url(#blue)"/>
+    <circle cx="23" cy="41.2" r="3.3" fill="url(#blue)"/>
+    <circle cx="33" cy="34.6" r="3.3" fill="url(#blue)"/>
+    <circle cx="43" cy="27" r="3.3" fill="url(#blue)"/>
+  </g>
+
+  <!-- step 5: done, gold -->
+  <circle cx="53" cy="17" r="8.5" fill="none" stroke="#f0b34a" stroke-opacity="0.22" stroke-width="1.2"/>
+  <circle cx="53" cy="17" r="4.8" fill="url(#gold)" filter="url(#glowG)"/>
+</svg>
