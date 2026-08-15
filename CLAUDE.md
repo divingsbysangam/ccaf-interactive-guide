@@ -44,7 +44,7 @@ The guide's look is a **subtle ambient particle system** (plan R16). Reference i
 
 * Sangam handles the Vercel account/domain transfer in parallel; it gates deployment (DIV-34) only — never local build work.
 
-* This is a "living guide": quarterly refresh workflow (DIV-35) with a visible "last verified" date. When updating content, check official blueprint deltas and link rot.
+* This is a "living guide". The quarterly refresh is fully specified in **`docs/QUARTERLY-REFRESH.md`** — follow it, don't improvise. Key mechanics: the footer's "last verified" date is the single constant `CCAF_LAST_VERIFIED` at the top of `js/content.js` (bump it when a pass completes; the site turns it gold with a warning after 120 days); `node scripts/check-links.js` is the link-rot check; each quarter has a Linear ticket (first: DIV-37, due 2026-11-15) that instructs creating the next one.
 
 * Inputs still owed by Sangam (tickets labeled `needs-sangam`): hero story + blocker narratives (DIV-25, post-launch content — a placeholder hero ships in v1), subdomain choice.
 
@@ -55,6 +55,7 @@ No build or lint step. Two Node scripts, both run from the repo root:
 ```bash
 node scripts/smoke-test.js "$PWD"    # run after any change to js/ — asserts routing, cards, drills, progress, hostile-localStorage safety
 node scripts/build-preview.js        # run after any change to index.html/css/js — regenerates demos/scaffold-preview.html
+node scripts/check-links.js          # quarterly: fetches every external URL in content.js + README, exits 1 on any failure
 ```
 
 The smoke test stubs the DOM and drives `js/app.js` through its public `window.CCAF` surface (`steps`, `storage`, `progressOf`, `toggleCard`); extend it when adding features. Commit the regenerated preview bundle alongside the change.

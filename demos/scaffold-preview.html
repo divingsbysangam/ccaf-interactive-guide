@@ -296,6 +296,7 @@ body {
   margin-top: 90px; text-align: center; font-size: 12.5px; color: #3d5a78;
 }
 .foot .dot { margin: 0 8px; }
+.foot time.stale { color: #c9a35a; border-bottom: 1px dotted #c9a35a; cursor: help; }
 
 /* ---------- responsive ---------- */
 @media (max-width: 560px) {
@@ -335,7 +336,7 @@ body {
   </main>
 
   <footer class="foot">
-    <span>Last verified: <time id="last-verified" datetime="2026-08-14">14 Aug 2026</time></span>
+    <span>Last verified against the official blueprint: <time id="last-verified"></time></span>
     <span class="dot">·</span>
     <span>Free &amp; open — no login, progress stays in your browser</span>
   </footer>
@@ -498,6 +499,12 @@ body {
 
 </script>
 <script>
+/* ===== LAST VERIFIED =====================================================
+   Bump this date whenever the quarterly refresh pass completes
+   (see docs/QUARTERLY-REFRESH.md). It renders in the site footer.
+   ISO format. The plan (R15) says it should never be older than ~4 months. */
+window.CCAF_LAST_VERIFIED = '2026-08-15';
+
 /* Card content registry. Content tickets (DIV-26..30) fill this per step;
    the two Reading cards below are SAMPLES proving the card system (DIV-24)
    and will be replaced during the DIV-27 content pass.
@@ -1868,8 +1875,26 @@ window.CCAF_CARDS.labs = [
     });
   }
 
+  /* "last verified" footer date, from the single source in js/content.js (R15).
+     Also flags visibly when the date is stale (>4 months) — an honest nudge to
+     both the maintainer and the reader. */
+  function renderLastVerified() {
+    const el = document.getElementById('last-verified');
+    const iso = window.CCAF_LAST_VERIFIED;
+    if (!el || !/^\d{4}-\d{2}-\d{2}$/.test(iso || '')) return;
+    const d = new Date(iso + 'T00:00:00Z');
+    el.setAttribute('datetime', iso);
+    el.textContent = d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+    const ageDays = (Date.now() - d.getTime()) / 86400000;
+    if (ageDays > 120) {
+      el.classList.add('stale');
+      el.title = 'This guide is overdue for its quarterly check against the official blueprint — verify facts against the official exam guide.';
+    }
+  }
+
   addEventListener('hashchange', () => { routeHash = location.hash; render(); });
   renderStory();
+  renderLastVerified();
   render();
 
   // small public surface for later tickets and tests

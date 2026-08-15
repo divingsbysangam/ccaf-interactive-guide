@@ -1,3 +1,9 @@
+/* ===== LAST VERIFIED =====================================================
+   Bump this date whenever the quarterly refresh pass completes
+   (see docs/QUARTERLY-REFRESH.md). It renders in the site footer.
+   ISO format. The plan (R15) says it should never be older than ~4 months. */
+window.CCAF_LAST_VERIFIED = '2026-08-15';
+
 /* Card content registry. Content tickets (DIV-26..30) fill this per step;
    the two Reading cards below are SAMPLES proving the card system (DIV-24)
    and will be replaced during the DIV-27 content pass.

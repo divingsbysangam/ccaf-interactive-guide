@@ -443,8 +443,26 @@
     });
   }
 
+  /* "last verified" footer date, from the single source in js/content.js (R15).
+     Also flags visibly when the date is stale (>4 months) — an honest nudge to
+     both the maintainer and the reader. */
+  function renderLastVerified() {
+    const el = document.getElementById('last-verified');
+    const iso = window.CCAF_LAST_VERIFIED;
+    if (!el || !/^\d{4}-\d{2}-\d{2}$/.test(iso || '')) return;
+    const d = new Date(iso + 'T00:00:00Z');
+    el.setAttribute('datetime', iso);
+    el.textContent = d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+    const ageDays = (Date.now() - d.getTime()) / 86400000;
+    if (ageDays > 120) {
+      el.classList.add('stale');
+      el.title = 'This guide is overdue for its quarterly check against the official blueprint — verify facts against the official exam guide.';
+    }
+  }
+
   addEventListener('hashchange', () => { routeHash = location.hash; render(); });
   renderStory();
+  renderLastVerified();
   render();
 
   // small public surface for later tickets and tests
