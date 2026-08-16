@@ -18,7 +18,7 @@ A free, interactive study guide for Anthropic's **Claude Certified Architect –
 
 * `docs/plans/2026-08-10-001-feat-ccaf-interactive-guide-plan.md` — the Product Contract (requirements R1–R16, key decisions, flows, acceptance examples, scope boundaries). Read this before building anything; do not invent product behavior it doesn't cover.
 
-* **Linear** (workspace `divings`, team Divings, project "CCA-F Interactive Guide"): epics DIV-19/20/21/22 with sub-issues DIV-23–36 (DIV-32 timer, DIV-33 export/import, and DIV-36 glossary were canceled as v1 overkill). Tickets carry per-feature UI direction and acceptance checklists; work them in dependency order (DIV-23 scaffold first). Update ticket status as work proceeds. (An identical older copy exists in the retired `sangampersonaldev` workspace — ignore it.)
+* **Linear** (workspace `divings`, team Divings, project "CCA-F Interactive Guide"): v1 epics DIV-19/20/21/22 with sub-issues DIV-23–36 are all done or canceled (DIV-32 timer, DIV-33 export/import, DIV-36 glossary, DIV-31 Spotify were cut as v1 overkill). **Open work: epic DIV-38 "v1.1 UX pass"** — ten tickets DIV-39–48 in a decided order (bugs 39–41 → hero auto-collapse 42 → wayfinding 43–45 → polish 46–48); each carries fix direction and acceptance. Plus the quarterly-refresh chain starting at DIV-37. Tickets carry per-feature UI direction and acceptance checklists; work them in dependency order. Update ticket status as work proceeds. (An identical older copy of the v1 board exists in the retired `sangampersonaldev` workspace — ignore it.)
 
 * `CCA-F-Open-Source-Resources.md` — the annotated inventory of \~25 external prep resources the guide curates and links out to.
 
