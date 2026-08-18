@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wireframe — CCA-F Guide, "clean &amp; Brilliant" light direction</title>
+<!-- Type (all open-license / OFL):
+     Instrument Serif — the DISTINCT display face for headings: sharp, editorial, high-contrast; nothing like default web type
+     Inter            — quiet humanist sans for body and UI (the Styrene-B role) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #faf8f5; --card: #ffffff; --ink: #1c2330; --muted: #5b6675; --faint: #7d8794;
+    --line: #e6e2dc; --accent: #2f6fdb; --accent-soft: #eaf1fd; --gold: #c8901a; --gold-soft: #fbf6ea;
+    --ok: #2f7d4a; --ok-soft: #f0f8f1;
+    --serif: 'Instrument Serif', Georgia, serif; --sans: 'Inter', -apple-system, system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.6; }
+  .banner { background: #fff8dc; border-bottom: 1px solid #e3d59a; padding: 10px 16px; font-size: 13px; color: #6a5a1a; text-align: center; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 56px 24px 96px; }
+  section.wf { margin-bottom: 96px; }
+  .wf-label { font-family: var(--sans); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--faint); border-bottom: 1px dashed var(--line); padding-bottom: 6px; margin-bottom: 28px; }
+
+  /* type scale — the hierarchy you asked for */
+  /* Instrument Serif is a single-weight display face — size and italics carry the hierarchy */
+  h1 { font-family: var(--serif); font-weight: 400; font-size: 54px; line-height: 1.05; letter-spacing: -0.005em; }
+  h1 em { font-style: italic; color: var(--accent); }
+  h2 { font-family: var(--serif); font-weight: 400; font-size: 36px; line-height: 1.15; }
+  h3 { font-family: var(--serif); font-weight: 400; font-size: 23px; line-height: 1.25; }
+  .eyebrow { font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); }
+  .meta { font-family: var(--sans); font-size: 13px; color: var(--muted); }
+  p.lede { font-size: 18px; color: var(--muted); line-height: 1.55; }
+  a { color: var(--accent); }
+
+  /* nav */
+  .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid var(--line); margin-bottom: 64px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-weight: 600; font-size: 18px; }
+  .brand .m { width: 26px; height: 26px; border-radius: 7px; background: linear-gradient(135deg,#0d1526,#1d5a94); position: relative; }
+  .brand .m::after { content: ""; position: absolute; right: 5px; top: 5px; width: 7px; height: 7px; border-radius: 50%; background: #f0b34a; }
+  .nav .meta a { text-decoration: none; }
+
+  /* hero */
+  .hero { margin-bottom: 72px; }
+  .hero h1 { margin: 10px 0 14px; }
+  .btn { display: inline-block; font-family: var(--sans); font-weight: 600; font-size: 15px; padding: 12px 22px; border-radius: 10px; background: var(--accent); color: #fff; text-decoration: none; }
+  .btn.ghost { background: transparent; color: var(--accent); border: 1px solid var(--line); }
+  .story { margin-top: 28px; padding: 22px 24px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; }
+  .story p { font-size: 15.5px; color: var(--ink); }
+  .story p + p { margin-top: 10px; }
+  .story summary { cursor: pointer; font-family: var(--sans); font-size: 14px; color: var(--accent); margin-top: 10px; }
+
+  /* journey map */
+  .steps { display: flex; flex-direction: column; gap: 12px; }
+  .step { display: grid; grid-template-columns: 44px 1fr auto; gap: 16px; align-items: center; padding: 18px 20px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; text-decoration: none; color: inherit; }
+  .step:hover { border-color: #cfd6e0; }
+  .n { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font-family: var(--sans); font-weight: 600; font-size: 15px; border: 2px solid var(--line); color: var(--muted); }
+  .step.done .n { background: var(--gold); border-color: var(--gold); color: #fff; }
+  .step.current .n { border-color: var(--accent); color: var(--accent); }
+  .step.current { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+  .step h3 { font-size: 18px; }
+  .step .meta { margin-top: 2px; }
+  .status { font-family: var(--sans); font-size: 13px; color: var(--muted); white-space: nowrap; }
+  .step.done .status { color: var(--gold); font-weight: 600; }
+  .hint { margin: 0 0 14px; font-size: 13.5px; color: var(--muted); }
+
+  /* domain strip (DIV-43) */
+  .strip { position: sticky; top: 0; z-index: 2; background: rgba(250,248,245,.92); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); margin: 0 -24px 28px; padding: 10px 24px; display: flex; gap: 8px; overflow-x: auto; }
+  .chip { font-family: var(--sans); font-size: 12.5px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--muted); white-space: nowrap; }
+  .chip.on { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+  .chip.done { border-color: var(--gold); color: var(--gold); }
+
+  /* card */
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 22px 24px; margin-bottom: 14px; }
+  .card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+  .card .mins { margin-left: 8px; }
+  .mark { font-family: var(--sans); font-size: 13px; font-weight: 600; padding: 7px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--accent); white-space: nowrap; cursor: pointer; }
+  .mark.on { border-color: var(--gold); color: var(--gold); background: var(--gold-soft); }
+  .card .quick { margin-top: 12px; }
+  .lane { margin-top: 12px; border-top: 1px solid var(--line); padding-top: 10px; }
+  .lane summary { cursor: pointer; font-family: var(--sans); font-size: 14px; color: var(--accent); }
+  .lane.twist summary { color: var(--gold); }
+  .lane p { margin-top: 8px; color: var(--muted); font-size: 15px; }
+  .next { margin-top: 12px; font-family: var(--sans); font-size: 14px; }
+  .waypoint { margin: 0 0 22px; padding: 16px 20px; background: var(--gold-soft); border-left: 3px solid var(--gold); border-radius: 0 12px 12px 0; }
+  .waypoint .eyebrow { color: var(--gold); }
+  .waypoint h3 { font-size: 17px; margin-top: 4px; }
+  .waypoint p { font-size: 15px; color: var(--ink); margin-top: 6px; }
+
+  /* drill */
+  .quiz .qh { display: flex; align-items: baseline; gap: 10px; }
+  .qnum { font-family: var(--sans); font-size: 12px; font-weight: 600; color: var(--accent); background: var(--accent-soft); padding: 2px 9px; border-radius: 999px; }
+  .scenario { margin-top: 10px; font-size: 16px; }
+  .opts { display: grid; gap: 8px; margin-top: 16px; }
+  .opt { display: grid; grid-template-columns: 26px 1fr auto; gap: 12px; align-items: start; text-align: left; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); font: inherit; font-size: 15px; color: var(--ink); cursor: pointer; }
+  .opt .l { font-family: var(--sans); font-weight: 600; font-size: 12.5px; width: 24px; height: 24px; border-radius: 50%; border: 1px solid var(--line); display: grid; place-items: center; color: var(--muted); }
+  .opt.right { border-color: var(--ok); background: var(--ok-soft); }
+  .opt.right .l { background: var(--ok); border-color: var(--ok); color: #fff; }
+  .opt.wrong { border-color: #d9a3a3; background: #fdf4f4; }
+  .badge { font-family: var(--sans); font-size: 12px; font-weight: 600; white-space: nowrap; }
+  .opt.right .badge { color: var(--ok); }
+  .opt.wrong .badge { color: #a64b4b; }
+  .opt.faded { opacity: .55; }
+  .explain { margin-top: 14px; border-top: 1px solid var(--line); padding-top: 12px; }
+  .explain p { font-size: 14.5px; color: var(--muted); margin-top: 6px; }
+  .explain b { color: var(--ink); font-family: var(--sans); }
+  .kbd-hint { font-family: var(--sans); font-size: 12.5px; color: var(--faint); margin-top: 6px; }
+  kbd { font: 11.5px var(--sans); border: 1px solid var(--line); border-radius: 4px; padding: 1px 5px; background: var(--card); }
+
+  footer { border-top: 1px solid var(--line); padding-top: 18px; font-size: 13px; color: var(--muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  @media (max-width: 560px) { h1 { font-size: 34px; } .step { grid-template-columns: 40px 1fr; } .status { grid-column: 2; } }
+</style>
+</head>
+<body>
+<div class="banner">Wireframe — directional. Judge the <b>calm, the hierarchy, and the type pairing</b>. Colours are the proposed tokens; wording is real content; nothing here is final pixel work.</div>
+<div class="wrap">
+
+  <nav class="nav">
+    <div class="brand"><span class="m"></span> CCA-F Guide</div>
+    <span class="meta"><a href="#">Journey map</a></span>
+  </nav>
+
+  <!-- ===================== 1. HOME ===================== -->
+  <section class="wf">
+    <div class="wf-label">1 · Home — first visit (story open) → returner (story collapsed, "Continue")</div>
+    <div class="hero">
+      <div class="eyebrow">Divings by Sangam</div>
+      <h1>Pass CCA-F <em>the way I did.</em></h1>
+      <p class="lede">Five steps from blueprint to booked exam — quick-bit concepts, hands-on missions, and drills that train you for how the questions are <em>actually</em> asked.</p>
+      <p style="margin-top:22px"><a class="btn" href="#">Start with the Blueprint</a> &nbsp; <span class="meta">or, once you've begun: <a href="#">Continue → Reading</a></span></p>
+      <details class="story">
+        <summary style="margin-top:0">Read my story — 977/1000, from Salesforce to agent-native →</summary>
+        <p style="margin-top:12px">I'm a Salesforce consultant with development experience. By the time CCA-F was announced I'd spent two years building outside my platform — OpenAI and Claude APIs from 2023, then Claude Code in the terminal, custom MCP servers…</p>
+        <p>Scored <b>977/1000</b>. The real result was quieter than the number… This is a <b>"you can do it"</b> guide, not an "I did it" one. <span class="meta">— Sangam</span></p>
+      </details>
+    </div>
+
+    <p class="hint">Open a step and mark cards as you go — the map fills in gold. Progress stays in this browser; nothing is sent anywhere.</p>
+    <div class="steps">
+      <a class="step done" href="#"><span class="n">✓</span><span><h3>Blueprint</h3><div class="meta">What the exam is, the five domains and weights, the official material.</div></span><span class="status">Complete</span></a>
+      <a class="step current" href="#"><span class="n">2</span><span><h3>Reading</h3><div class="meta">Quick-bit concept cards — two minutes each, with a "from zero" lane.</div></span><span class="status">7 of 21</span></a>
+      <a class="step" href="#"><span class="n">3</span><span><h3>Labs</h3><div class="meta">Build small things in Claude Code. The exam tests judgment.</div></span><span class="status">Not started</span></a>
+      <a class="step" href="#"><span class="n">4</span><span><h3>Drills</h3><div class="meta">Analogy-framed questions with four close options.</div></span><span class="status">Not started</span></a>
+      <a class="step" href="#"><span class="n">5</span><span><h3>Mock Exam</h3><div class="meta">Feel the format, then full-length community mocks. Then book.</div></span><span class="status">Not started</span></a>
+    </div>
+  </section>
+
+  <!-- ===================== 2. READING ===================== -->
+  <section class="wf">
+    <div class="wf-label">2 · Reading step — sticky domain strip, waypoint, card with lanes</div>
+    <p class="meta" style="margin-bottom:8px"><a href="#" style="text-decoration:none">← Journey map</a></p>
+    <div class="eyebrow">Step 2 · 7 of 21 read</div>
+    <h2 style="margin:6px 0 8px">Reading</h2>
+    <p class="lede">Bite-sized concepts across all five domains. Each card is a two-minute read with optional depth when you need it.</p>
+
+    <div class="strip" style="margin-top:22px">
+      <span class="chip on">Agentic 27% · 4/6</span><span class="chip">Claude Code 20% · 3/5</span><span class="chip">Prompting 20% · 0/4</span><span class="chip">Tools &amp; MCP 18% · 0/3</span><span class="chip">Context 15% · 0/3</span>
+    </div>
+
+    <aside class="waypoint">
+      <div class="eyebrow">From Sangam's journey</div>
+      <h3>Blocker 2 — the mindset shift, and the day the questions changed</h3>
+      <p>Crossing from CRM thinking to agent-native architecture was the hardest part — and I hadn't been "prepping" at all… <a href="#">read more</a></p>
+    </aside>
+
+    <h3 style="margin:26px 0 12px; font-size:15px; font-family:var(--sans); font-weight:600; color:var(--muted); letter-spacing:.02em">AGENTIC ARCHITECTURE &amp; ORCHESTRATION <span class="meta" style="font-weight:400">· 27% of the exam</span></h3>
+
+    <article class="card">
+      <div class="card-head"><div><h3 style="display:inline">Workflow or agent? The first fork</h3><span class="meta mins">~2 min</span></div><button class="mark on">✓ Read</button></div>
+      <p class="quick">The first architectural question is never "which model" — it's <b>how much autonomy the problem needs</b>. If the steps are known in advance, build a <em>workflow</em>: fixed steps with LLM calls inside. If the model must decide its own path, that's an <em>agent</em>…</p>
+      <details class="lane"><summary>From zero — plain language &amp; a familiar-platform analogy</summary><p>Salesforce lens: a workflow is a Flow — every branch drawn in advance. An agent is like handing a case to a senior rep…</p></details>
+      <details class="lane twist"><summary>How the exam twists this</summary><p>Scenarios describing a repeatable, well-defined pipeline are bait for over-engineering…</p></details>
+      <p class="next"><a href="#">Next: One agent beats five — until it doesn't →</a></p>
+    </article>
+    <article class="card">
+      <div class="card-head"><div><h3 style="display:inline">One agent beats five — until it doesn't</h3><span class="meta mins">~2 min</span></div><button class="mark">Mark as read</button></div>
+      <p class="quick">Default to <b>one agent with good tools</b>. Add more agents only when a real constraint forces it…</p>
+      <details class="lane"><summary>From zero — plain language &amp; a familiar-platform analogy</summary></details>
+      <details class="lane twist"><summary>How the exam twists this</summary></details>
+    </article>
+  </section>
+
+  <!-- ===================== 3. DRILLS ===================== -->
+  <section class="wf">
+    <div class="wf-label">3 · Drills — accessible feedback (text + colour), focus kept, keyboard hint</div>
+    <div class="eyebrow">Step 4 · 3 of 11 answered · 2 correct</div>
+    <h2 style="margin:6px 0 8px">Drills</h2>
+    <p class="kbd-hint">Keyboard: <kbd>A</kbd>–<kbd>D</kbd> answer · <kbd>N</kbd> next</p>
+
+    <article class="card quiz" style="margin-top:22px">
+      <div class="qh"><span class="qnum">Q1</span><h3 style="font-size:15px; font-family:var(--sans); color:var(--muted); font-weight:500">Agentic Architecture</h3></div>
+      <p class="scenario">A lending company processes thousands of applications daily. Every application goes through the same three stages: pull key fields from uploaded documents, check them against eligibility rules, and produce a draft decision letter. The team wants to add Claude to speed this up. What should they build?</p>
+      <div class="opts">
+        <button class="opt wrong"><span class="l">A</span><span>An autonomous agent with document, rules, and drafting tools that decides how to handle each application</span><span class="badge">✗ Your answer</span></button>
+        <button class="opt right"><span class="l">B</span><span>A fixed three-stage pipeline of model calls with validation checks between stages</span><span class="badge">✓ Correct</span></button>
+        <button class="opt faded"><span class="l">C</span><span>An orchestrator that spawns a subagent per application section</span><span></span></button>
+        <button class="opt faded"><span class="l">D</span><span>A single comprehensive prompt asking the model to do all three stages at once</span><span></span></button>
+      </div>
+      <div class="explain">
+        <p><b>A.</b> Tempting because "agent" sounds like the modern answer — but autonomy buys nothing here and costs predictability. The steps never vary.</p>
+        <p><b>B ✓.</b> When the steps are known in advance and repeated at volume, a deterministic workflow with gates is cheaper, faster, auditable, and easier to debug.</p>
+        <p class="next"><a href="#">Next question →</a></p>
+      </div>
+    </article>
+  </section>
+
+  <footer><span>Last verified against the official blueprint: 15 Aug 2026</span><span>Free &amp; open · no login · progress stays in your browser</span></footer>
+</div>
+</body>
+</html>
