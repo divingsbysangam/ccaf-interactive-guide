@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wireframe — flashcard deck (one card at a time)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:#faf8f5; --card:#fff; --ink:#1c2330; --muted:#5b6675; --faint:#7d8794; --line:#e6e2dc;
+    --accent:#2f6fdb; --accent-soft:#eaf1fd; --gold:#c8901a; --gold-soft:#fbf6ea; --ok:#2f7d4a; --ok-soft:#f0f8f1;
+    --serif:'Instrument Serif',Georgia,serif; --sans:'Inter',-apple-system,system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6}
+  .banner{background:#fff8dc;border-bottom:1px solid #e3d59a;padding:10px 16px;font-size:13px;color:#6a5a1a;text-align:center}
+  .wrap{max-width:720px;margin:0 auto;padding:40px 24px 96px}
+  .wf-label{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);border-bottom:1px dashed var(--line);padding-bottom:6px;margin:72px 0 24px}
+  .wf-label:first-of-type{margin-top:0}
+  h2{font-family:var(--serif);font-weight:400;font-size:36px;line-height:1.15}
+  h3{font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.25}
+  .eyebrow{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+  .meta{font-size:13px;color:var(--muted)}
+  a{color:var(--accent)}
+  .crumb{font-size:14px;margin-bottom:10px}
+  .crumb a{text-decoration:none}
+
+  /* ---- deck header: where am I ---- */
+  .deck-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin:8px 0 18px;flex-wrap:wrap}
+  .domain-tabs{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 6px}
+  .dt{font-size:12.5px;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--muted);text-decoration:none;white-space:nowrap}
+  .dt.on{border-color:var(--accent);color:var(--accent);font-weight:600}
+  .dt.done{border-color:var(--gold);color:var(--gold)}
+  .dots{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--line)}
+  .dot.read{background:var(--gold)}
+  .dot.now{width:22px;border-radius:999px;background:var(--accent)}
+  .counter{font-size:13px;color:var(--muted);white-space:nowrap}
+
+  /* ---- the card stage ---- */
+  .stage{position:relative}
+  .flash{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px 32px 26px;min-height:340px;box-shadow:0 1px 0 rgba(0,0,0,.02),0 12px 32px -20px rgba(28,35,48,.25)}
+  .flash .top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .flash .quick{margin-top:14px;font-size:17px;line-height:1.6}
+  .lane{margin-top:14px;border-top:1px solid var(--line);padding-top:10px}
+  .lane summary{cursor:pointer;font-size:14px;color:var(--accent)}
+  .lane.twist summary{color:var(--gold)}
+  .lane p{margin-top:8px;color:var(--muted);font-size:15px}
+  .mark{font-size:13px;font-weight:600;padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--accent);white-space:nowrap;cursor:pointer}
+  .mark.on{border-color:var(--gold);color:var(--gold);background:var(--gold-soft)}
+  /* peek of the next card behind (subtle depth cue that this is a deck) */
+  .peek{position:absolute;left:14px;right:14px;bottom:-8px;height:24px;background:var(--card);border:1px solid var(--line);border-radius:0 0 18px 18px;z-index:-1;opacity:.7}
+  .peek2{left:26px;right:26px;bottom:-15px;opacity:.4}
+
+  /* ---- controls ---- */
+  .ctrl{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:26px}
+  .btn{font-size:14.5px;font-weight:600;padding:11px 18px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  .btn[disabled]{opacity:.4;cursor:default}
+  kbd{font:11.5px var(--sans);border:1px solid var(--line);border-radius:4px;padding:1px 5px;background:var(--card);color:var(--muted)}
+  .kbd-hint{font-size:12.5px;color:var(--faint);text-align:center;margin-top:12px}
+  .listlink{font-size:13px;text-align:center;margin-top:8px}
+
+  /* ---- drill variant ---- */
+  .qnum{font-size:12px;font-weight:600;color:var(--accent);background:var(--accent-soft);padding:2px 9px;border-radius:999px}
+  .scenario{margin-top:12px;font-size:17px;line-height:1.6}
+  .opts{display:grid;gap:8px;margin-top:18px}
+  .opt{display:grid;grid-template-columns:26px 1fr auto;gap:12px;align-items:start;text-align:left;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:var(--card);font:inherit;font-size:15px;color:var(--ink);cursor:pointer}
+  .opt .l{font-weight:600;font-size:12.5px;width:24px;height:24px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--muted)}
+  .opt.right{border-color:var(--ok);background:var(--ok-soft)} .opt.right .l{background:var(--ok);border-color:var(--ok);color:#fff}
+  .opt.wrong{border-color:#d9a3a3;background:#fdf4f4}
+  .badge{font-size:12px;font-weight:600;white-space:nowrap} .opt.right .badge{color:var(--ok)} .opt.wrong .badge{color:#a64b4b}
+  .opt.faded{opacity:.55}
+  .explain{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+  .explain p{font-size:14.5px;color:var(--muted);margin-top:6px} .explain b{color:var(--ink)}
+
+  /* ---- mobile ---- */
+  @media (max-width:560px){ .flash{padding:22px 20px;min-height:0} .ctrl .btn span.t{display:none} h2{font-size:30px} }
+</style>
+</head>
+<body>
+<div class="banner">Wireframe — directional. Judge the <b>one-card-at-a-time flow, the sense of place, and the controls</b>. Swipe on touch · ← → keys or buttons on desktop.</div>
+<div class="wrap">
+
+  <div class="wf-label">A · Reading as a flashcard deck</div>
+  <p class="crumb"><a href="#">← Journey map</a></p>
+  <div class="eyebrow">Step 2 · Reading</div>
+  <h2 style="margin:4px 0 6px">Agentic Architecture &amp; Orchestration</h2>
+  <p class="meta">27% of the exam · card 3 of 6 in this domain · 9 of 21 overall</p>
+
+  <div class="domain-tabs" aria-label="Domains">
+    <a class="dt done" href="#">Agentic ✓ 6/6</a><a class="dt on" href="#">Claude Code 3/5</a><a class="dt" href="#">Prompting 0/4</a><a class="dt" href="#">Tools &amp; MCP 0/3</a><a class="dt" href="#">Context 0/3</a>
+  </div>
+  <div class="deck-head">
+    <div class="dots" aria-label="Cards in this domain"><span class="dot read"></span><span class="dot read"></span><span class="dot now"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+    <span class="counter">3 / 6</span>
+  </div>
+
+  <div class="stage">
+    <article class="flash" aria-roledescription="flashcard" aria-label="Card 3 of 6">
+      <div class="top"><h3>Orchestrator and subagents</h3><span class="meta">~2 min</span></div>
+      <p class="quick">The workhorse multi-agent pattern: a <b>lead agent decomposes the task</b> and dispatches scoped subagents, each with its <em>own clean context window</em> and a narrow brief. Subagents return summaries, not transcripts — the orchestrator holds the big picture and integrates results. Use it for parallel research, wide codebase sweeps, or specialist review passes.</p>
+      <details class="lane"><summary>From zero — plain language &amp; a familiar-platform analogy</summary><p>It's case swarming: a triage lead breaks a messy escalation into work items and routes each to a specialist queue…</p></details>
+      <details class="lane twist"><summary>How the exam twists this</summary><p>Cue phrases that point here: "context window fills up," "independent investigations," "parallel exploration"…</p></details>
+    </article>
+    <div class="peek"></div><div class="peek peek2"></div>
+  </div>
+
+  <div class="ctrl">
+    <button class="btn"><span>←</span><span class="t">Previous</span></button>
+    <button class="mark">Mark as read</button>
+    <button class="btn primary"><span class="t">Next</span><span>→</span></button>
+  </div>
+  <p class="kbd-hint"><kbd>←</kbd> <kbd>→</kbd> move · <kbd>Space</kbd> mark read · <kbd>1</kbd> <kbd>2</kbd> open a lane</p>
+  <p class="listlink"><a href="#">Show all cards in this domain as a list</a></p>
+
+  <div class="wf-label">B · Drills as a deck — one question, focused</div>
+  <div class="eyebrow">Step 4 · Drills</div>
+  <h2 style="margin:4px 0 6px">Question 4 <span style="color:var(--muted);font-size:24px">of 11</span></h2>
+  <div class="deck-head" style="margin-top:12px">
+    <div class="dots"><span class="dot read" style="background:var(--ok)"></span><span class="dot read" style="background:#d9a3a3"></span><span class="dot read" style="background:var(--ok)"></span><span class="dot now"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+    <span class="counter">2 correct so far</span>
+  </div>
+  <div class="stage">
+    <article class="flash">
+      <div class="top"><span class="qnum">Claude Code Configuration</span></div>
+      <p class="scenario">Developers on a team each use Claude Code on the same repository. Code style, test commands, and "never touch these generated files" rules keep getting applied inconsistently — each developer re-explains the project in their own words every session. What fixes this?</p>
+      <div class="opts">
+        <button class="opt faded"><span class="l">A</span><span>A shared prompt template developers paste at the start of each session</span><span></span></button>
+        <button class="opt faded"><span class="l">B</span><span>A wiki page documenting the conventions for developers to reference</span><span></span></button>
+        <button class="opt wrong"><span class="l">C</span><span>Switching the team to a more capable model that infers conventions from the codebase</span><span class="badge">✗ Your answer</span></button>
+        <button class="opt right"><span class="l">D</span><span>A CLAUDE.md checked into the repository root with the commands, conventions, and hard rules</span><span class="badge">✓ Correct</span></button>
+      </div>
+      <div class="explain">
+        <p><b>C.</b> Capability doesn't substitute for missing information — conventions like "which test command" are facts, not inferences.</p>
+        <p><b>D ✓.</b> Cross-session, cross-developer consistency is exactly what checked-in project memory is for: written once, loaded automatically for everyone.</p>
+      </div>
+    </article>
+    <div class="peek"></div>
+  </div>
+  <div class="ctrl">
+    <button class="btn"><span>←</span><span class="t">Previous</span></button>
+    <span class="meta">answered · explanation shown</span>
+    <button class="btn primary"><span class="t">Next question</span><span>→</span></button>
+  </div>
+  <p class="kbd-hint"><kbd>A</kbd>–<kbd>D</kbd> answer · <kbd>→</kbd> or <kbd>N</kbd> next · <kbd>←</kbd> review</p>
+
+  <div class="wf-label">C · Journey map stays a vertical list — it's the only "overview" screen</div>
+  <p class="meta">The map (home) doesn't become a deck: five items are already visible at once, and the overview <em>is</em> its job. Decks are for the inside of a step — Reading, Labs, Drills, Mock samples. Blueprint (3 cards) and Labs (5 missions) get the same deck; the Mock's external links panel stays a simple list.</p>
+</div>
+</body>
+</html>
