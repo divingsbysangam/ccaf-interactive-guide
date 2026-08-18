@@ -37,6 +37,12 @@ The CCA-F exam is new, and its \~25 community prep resources are almost all read
 
 * **Journey Map landing over exam-first or narrative entry.** The five steps are the page; calm clarity beats a diagnostic hook. (session-settled: user-directed — chosen over a diagnostic-first entry and a story-timeline shape after a visual comparison of all three.) Governs R1.
 
+* **v1.1 visual direction: calm, light, Brilliant-style — supersedes the particle identity.** Plain warm-paper background, white cards with hairlines, generous whitespace, one accent (blue) plus gold for "done", nothing moving. Type: Instrument Serif for headings, Inter for body/UI (both OFL, self-hosted; Anthropic's proprietary faces are not used). Light theme only. (session-settled 2026-08-16/18: user-directed — chosen after reviewing Brilliant.org and `demos/wireframe-brilliant-light.html`; the moving particles competed with reading.) Governs R16, R18.
+
+* **Flashcard decks inside every step.** One card / one question on screen at a time with domain tabs, a dot strip, Prev/Next, keyboard, and swipe; the Journey Map stays a vertical list. **"Next" marks the current card read and advances.** (session-settled 2026-08-18: user-directed — chosen over long-scroll lists after `demos/wireframe-flashcards.html`; the deck replaces the sticky domain strip and "next card" link ideas.) Governs R19.
+
+* **WCAG 2.2 AA is a v1.1 requirement.** Findings in `docs/ACCESSIBILITY-AUDIT-2026-08.md`; P1 items (colour-only drill feedback, focus loss, contrast tokens) are fixed as part of the redesign. Governs R20.
+
 * **No login; browser-local progress with export/import.** (session-settled: user-approved — chosen over Google OAuth plus a database: login without server-side sync adds friction, a Google Cloud project, and a privacy burden while changing nothing about how progress is saved.) Governs R13.
 
 * **Living guide with quarterly refresh over timeless snapshot.** (session-settled: user-directed — chosen over a one-time publication: a brand flagship cannot go stale against a fast-moving exam.) Governs R15.
@@ -67,9 +73,15 @@ The CCA-F exam is new, and its \~25 community prep resources are almost all read
 
 * R4. The reading experience is calm and gate-free: no login wall, popups, or ads; a first-time visitor is reading content within seconds of landing.
 
-* R16. A subtle ambient particle layer is the guide's visual identity: slow drifting background particles, journey-path sparks between steps, and gentle bursts on completion — always behind the content, slow-moving, and never obstructing text (reference: `demos/guide-particles-preview.html`).
+* R16. *(Superseded 2026-08-18 by R18.)* The v1 ambient particle layer is retired as the visual identity; the logo mark (`assets/mark.svg`, the journey constellation) remains as the only trace. `demos/guide-particles-preview.html` and `js/particles.js` are historical.
 
 * R17. The hero shows a "Continue" resume button once progress exists. (The glossary/quick-reference page and footer references row originally in R17 were cut 2026-08-15 as v1 overkill — user decision.)
+
+* R18. Visual identity (v1.1): light theme only — paper `#faf8f5`, card `#ffffff`, ink `#1c2330`, muted `#5b6675`, line `#e6e2dc`, accent `#2f6fdb`, done-gold `#c8901a`, success `#2f7d4a`; Instrument Serif headings + Inter body/UI, self-hosted; no glass, glow, or motion; every text pairing ≥ 4.5:1. Reference: `demos/wireframe-brilliant-light.html`.
+
+* R19. Every step's content is a flashcard deck: one card or question at a time, with domain tabs, a per-domain dot strip and counter, Prev/Next buttons, keyboard (←/→, Space, A–D, N) and touch swipe, position persisted per step, and a "show as list" fallback. Next marks the current card read and advances; drills reveal feedback on answer and advance on Next. The Journey Map and the mock external-links panel remain lists. Reference: `demos/wireframe-flashcards.html`.
+
+* R20. Accessibility: WCAG 2.2 AA. In particular — drill/mock feedback conveyed by text and ARIA, never colour alone; focus is never lost on answer/advance/reset; skip link; a strict heading outline; per-route document titles and announcements; new-tab links announced; all interactive targets ≥ 24px; in-palette visible focus. Source: `docs/ACCESSIBILITY-AUDIT-2026-08.md`.
 
 **Content (the five steps)**
 
