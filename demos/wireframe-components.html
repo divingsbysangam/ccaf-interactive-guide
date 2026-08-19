@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Component sheet — orbs, buttons, path, icons (light theme)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#faf8f5;--card:#fff;--ink:#1c2330;--muted:#5b6675;--faint:#7d8794;--line:#e6e2dc;--line-2:#d6d0c8;
+    --accent:#2f6fdb;--accent-2:#1f56b8;--accent-soft:#eaf1fd;--gold:#c8901a;--gold-2:#a8760f;--gold-soft:#fbf6ea;
+    --ok:#2f7d4a;--ok-soft:#f0f8f1;--bad:#a64b4b;--bad-soft:#fdf4f4;
+    --serif:'Instrument Serif',Georgia,serif;--sans:'Inter',-apple-system,system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55}
+  .banner{background:#fff8dc;border-bottom:1px solid #e3d59a;padding:10px 16px;font-size:13px;color:#6a5a1a;text-align:center}
+  .wrap{max-width:820px;margin:0 auto;padding:44px 24px 96px}
+  h1{font-family:var(--serif);font-weight:400;font-size:40px;line-height:1.1;margin-bottom:6px}
+  h2{font-family:var(--serif);font-weight:400;font-size:26px;margin:0 0 4px}
+  .lead{color:var(--muted);margin-bottom:34px}
+  section{margin:44px 0 0;padding-top:28px;border-top:1px solid var(--line)}
+  .why{color:var(--muted);font-size:14px;margin:6px 0 20px;max-width:640px}
+  .row{display:flex;gap:26px;align-items:center;flex-wrap:wrap}
+  .lbl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);display:block;margin-top:8px;text-align:center}
+  .cell{text-align:center}
+
+  /* ===== ORBS — the one signature object ===== */
+  .orb{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-weight:600;font-size:15px;position:relative;
+       background:radial-gradient(circle at 32% 28%,#ffffff 0%,#f4f1ec 38%,#e3ded6 100%);color:var(--muted);
+       box-shadow:inset 0 -2px 4px rgba(28,35,48,.06),0 1px 2px rgba(28,35,48,.08)}
+  .orb.current{background:radial-gradient(circle at 32% 28%,#8db4f2 0%,var(--accent) 45%,var(--accent-2) 100%);color:#fff;
+       box-shadow:inset 0 -2px 5px rgba(0,0,0,.15),0 2px 6px rgba(47,111,219,.28),0 0 0 4px var(--accent-soft)}
+  .orb.done{background:radial-gradient(circle at 32% 28%,#f5d98a 0%,var(--gold) 45%,var(--gold-2) 100%);color:#fff;
+       box-shadow:inset 0 -2px 5px rgba(0,0,0,.15),0 2px 6px rgba(200,144,26,.25)}
+  .orb.sm{width:32px;height:32px;font-size:12.5px}
+  .orb.lg{width:60px;height:60px;font-size:20px}
+
+  /* ===== PATH — orbs connected on the journey map ===== */
+  .path{position:relative;display:flex;flex-direction:column;gap:14px;max-width:560px}
+  .path::before{content:"";position:absolute;left:21px;top:22px;bottom:22px;width:2px;background:var(--line-2);border-radius:2px}
+  .path .seg{position:absolute;left:21px;top:22px;width:2px;background:var(--gold);border-radius:2px;height:calc(50% - 40px)}
+  .stop{display:grid;grid-template-columns:44px 1fr auto;gap:16px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px 12px 12px;position:relative;z-index:1}
+  .stop.current{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+  .stop h3{font-family:var(--serif);font-weight:400;font-size:19px}
+  .stop .m{font-size:13px;color:var(--muted)}
+  .stop .s{font-size:13px;color:var(--muted);white-space:nowrap}
+  .stop.done .s{color:var(--gold);font-weight:600}
+  .stop.current .s{color:var(--accent);font-weight:600}
+
+  /* ===== BUTTONS ===== */
+  .btn{font:600 14.5px var(--sans);padding:11px 18px;border-radius:12px;border:1px solid transparent;cursor:pointer;display:inline-flex;align-items:center;gap:8px;text-decoration:none;line-height:1}
+  .btn.primary{background:var(--accent);color:#fff;box-shadow:inset 0 -2px 0 rgba(0,0,0,.14),0 1px 2px rgba(47,111,219,.25)}
+  .btn.primary:hover{background:var(--accent-2)}
+  .btn.primary:active{box-shadow:inset 0 2px 0 rgba(0,0,0,.14);transform:translateY(1px)}
+  .btn.secondary{background:var(--card);color:var(--ink);border-color:var(--line-2);box-shadow:inset 0 -2px 0 rgba(28,35,48,.06)}
+  .btn.secondary:hover{border-color:#bfb8ae}
+  .btn.ghost{background:transparent;color:var(--accent);border-color:transparent;padding-left:6px;padding-right:6px}
+  .btn.ghost:hover{background:var(--accent-soft)}
+  .btn.gold{background:var(--gold-soft);color:var(--gold-2);border-color:#eadbb3}
+  .btn[disabled]{opacity:.45;cursor:default;box-shadow:none}
+  .btn:focus-visible{outline:none;box-shadow:0 0 0 3px var(--accent-soft),0 0 0 5px var(--accent)}
+  .pill{font:600 13px var(--sans);padding:7px 14px;border-radius:999px;border:1px solid var(--line-2);background:var(--card);color:var(--accent);cursor:pointer}
+  .pill.on{background:var(--gold-soft);border-color:#eadbb3;color:var(--gold-2)}
+  .ico{width:18px;height:18px;flex:none}
+
+  /* ===== ICONS — hairline outline set ===== */
+  .icons{display:flex;gap:26px;flex-wrap:wrap}
+  .icons svg{width:26px;height:26px;stroke:var(--ink);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+  .icons .cell.accent svg{stroke:var(--accent)} .icons .cell.gold svg{stroke:var(--gold)}
+
+  /* ===== DOTS + TABS + FEEDBACK ===== */
+  .dots{display:flex;gap:6px;align-items:center}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--line-2)}
+  .dot.read{background:var(--gold)} .dot.now{width:22px;border-radius:999px;background:var(--accent)}
+  .dot.ok{background:var(--ok)} .dot.bad{background:#d9a3a3}
+  .tab{font-size:12.5px;padding:5px 11px;border-radius:999px;border:1px solid var(--line-2);background:var(--card);color:var(--muted)}
+  .tab.on{border-color:var(--accent);color:var(--accent);font-weight:600;background:var(--accent-soft)}
+  .tab.done{border-color:#eadbb3;color:var(--gold-2);background:var(--gold-soft)}
+  .badge{font:600 12px var(--sans);padding:3px 9px;border-radius:999px}
+  .badge.ok{color:var(--ok);background:var(--ok-soft)} .badge.bad{color:var(--bad);background:var(--bad-soft)}
+  .opt{display:grid;grid-template-columns:26px 1fr auto;gap:12px;align-items:center;padding:11px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);max-width:520px}
+  .opt .l{width:24px;height:24px;border-radius:50%;border:1px solid var(--line-2);display:grid;place-items:center;font-weight:600;font-size:12.5px;color:var(--muted)}
+  .opt.right{border-color:var(--ok);background:var(--ok-soft)} .opt.right .l{background:var(--ok);border-color:var(--ok);color:#fff}
+  .opt.wrong{border-color:#d9a3a3;background:var(--bad-soft)}
+  .swatches{display:flex;gap:10px;flex-wrap:wrap}
+  .sw{width:64px;height:64px;border-radius:12px;border:1px solid var(--line);display:grid;place-items:end center;padding-bottom:5px;font-size:10px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="banner">Component sheet — directional. React to the <b>orbs, the path, the button styles, and the icon language</b>. Everything derives from the approved light theme.</div>
+<div class="wrap">
+  <h1>Details that carry the <em style="color:var(--accent)">calm</em>.</h1>
+  <p class="lead">One signature object (the orbs on the path); everything else disciplined. This is how a minimal design ends up looking considered rather than plain.</p>
+
+  <section>
+    <h2>1 · Orbs — the signature</h2>
+    <p class="why">Soft, matte spheres with a single highlight — a polished stone on paper, not a glowing bulb. Three states, and the state <em>is</em> the colour: grey = ahead, blue = you are here, gold = done. Only used for journey steps (and their small echo in deck headers).</p>
+    <div class="row">
+      <div class="cell"><div class="orb">3</div><span class="lbl">ahead</span></div>
+      <div class="cell"><div class="orb current">2</div><span class="lbl">current</span></div>
+      <div class="cell"><div class="orb done">✓</div><span class="lbl">done</span></div>
+      <div class="cell" style="margin-left:14px"><div class="orb sm">4</div><span class="lbl">small</span></div>
+      <div class="cell"><div class="orb lg current">2</div><span class="lbl">large (step page)</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>2 · The path — orbs connected</h2>
+    <p class="why">The Journey Map's line stays: a hairline behind the orbs, filled gold up to the last completed step. It's the only place the "journey" is drawn — and the logo mark is this same idea, in miniature.</p>
+    <div class="path">
+      <span class="seg"></span>
+      <div class="stop done"><div class="orb done">✓</div><div><h3>Blueprint</h3><div class="m">What the exam is, the five domains, the official material.</div></div><span class="s">Complete</span></div>
+      <div class="stop current"><div class="orb current">2</div><div><h3>Reading</h3><div class="m">Quick-bit concept cards — two minutes each.</div></div><span class="s">7 of 21</span></div>
+      <div class="stop"><div class="orb">3</div><div><h3>Labs</h3><div class="m">Build small things in Claude Code.</div></div><span class="s">Not started</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>3 · Buttons — three roles, one family</h2>
+    <p class="why">Rounded (12px), a hairline of depth (a subtle inset bottom edge — the "pressable" cue Brilliant uses), no gradients, no glow. Primary = the one thing to do next; secondary = the alternative; ghost = navigation. Gold pill = the "read/complete" toggle. Focus ring is in-palette and unmissable.</p>
+    <div class="row" style="margin-bottom:16px">
+      <a class="btn primary" href="#">Next <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="btn secondary" href="#"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Previous</a>
+      <a class="btn ghost" href="#">← Journey map</a>
+      <button class="btn secondary" disabled>Previous</button>
+    </div>
+    <div class="row">
+      <button class="pill">Mark as read</button>
+      <button class="pill on">✓ Read</button>
+      <a class="btn gold" href="#">Book your exam ↗</a>
+      <a class="btn primary" href="#" style="box-shadow:0 0 0 3px var(--accent-soft),0 0 0 5px var(--accent)">Focused state</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>4 · Icons — one hairline set</h2>
+    <p class="why">Outline icons, 1.5px stroke, rounded caps — the same weight as the body text so they never shout. Ink by default; accent or gold only when the icon <em>is</em> a state. Drawn inline as SVG (no icon font, no library). Roughly a dozen needed across the whole guide.</p>
+    <div class="icons">
+      <div class="cell"><svg viewBox="0 0 24 24"><path d="M4 19V5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-2zm0 0a2 2 0 0 1 2-2h12"/></svg><span class="lbl">blueprint</span></div>
+      <div class="cell"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span class="lbl">reading</span></div>
+      <div class="cell"><svg viewBox="0 0 24 24"><path d="M9 3h6l1 4h3v4l-2 1v6a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2v-6l-2-1V7h3z"/></svg><span class="lbl">labs</span></div>
+      <div class="cell"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg><span class="lbl">drills</span></div>
+      <div class="cell"><svg viewBox="0 0 24 24"><path d="M6 4h12v16l-6-3-6 3z"/></svg><span class="lbl">mock</span></div>
+      <div class="cell accent"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span class="lbl">next</span></div>
+      <div class="cell gold"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><span class="lbl">done</span></div>
+      <div class="cell"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg><span class="lbl">external</span></div>
+      <div class="cell"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg><span class="lbl">expand</span></div>
+      <div class="cell"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M8 3v4M16 3v4M4 11h16"/></svg><span class="lbl">last verified</span></div>
+      <div class="cell"><svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"/></svg><span class="lbl">from sangam</span></div>
+      <div class="cell"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="12" rx="2"/><path d="M7 11h.01M11 11h.01M15 11h.01M7 15h10"/></svg><span class="lbl">keyboard</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>5 · Small parts — dots, tabs, feedback</h2>
+    <p class="why">The deck's dot strip and domain tabs reuse the orb colours at tiny scale. Drill feedback: text badge + tint, so it works in grayscale.</p>
+    <div class="row" style="margin-bottom:18px">
+      <div class="dots"><span class="dot read"></span><span class="dot read"></span><span class="dot now"></span><span class="dot"></span><span class="dot"></span></div>
+      <span style="color:var(--muted);font-size:13px">reading deck</span>
+      <div class="dots" style="margin-left:18px"><span class="dot ok"></span><span class="dot bad"></span><span class="dot ok"></span><span class="dot now"></span><span class="dot"></span></div>
+      <span style="color:var(--muted);font-size:13px">drills deck</span>
+    </div>
+    <div class="row" style="margin-bottom:18px"><span class="tab done">Agentic ✓ 6/6</span><span class="tab on">Claude Code 3/5</span><span class="tab">Prompting 0/4</span></div>
+    <div class="opt right" style="margin-bottom:8px"><span class="l">B</span><span>A fixed three-stage pipeline with validation between stages</span><span class="badge ok">✓ Correct</span></div>
+    <div class="opt wrong"><span class="l">A</span><span>An autonomous agent that decides how to handle each application</span><span class="badge bad">✗ Your answer</span></div>
+  </section>
+
+  <section>
+    <h2>6 · The palette, at a glance</h2>
+    <div class="swatches">
+      <div class="sw" style="background:#faf8f5">paper</div><div class="sw" style="background:#fff">card</div><div class="sw" style="background:#e6e2dc">line</div>
+      <div class="sw" style="background:#1c2330;color:#fff">ink</div><div class="sw" style="background:#5b6675;color:#fff">muted</div>
+      <div class="sw" style="background:#2f6fdb;color:#fff">accent</div><div class="sw" style="background:#eaf1fd">accent-soft</div>
+      <div class="sw" style="background:#c8901a;color:#fff">gold</div><div class="sw" style="background:#fbf6ea">gold-soft</div>
+      <div class="sw" style="background:#2f7d4a;color:#fff">success</div>
+    </div>
+  </section>
+</div>
+</body>
+</html>
