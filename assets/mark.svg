@@ -1,18 +1,40 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Divings — CCA-F Interactive Guide">
-  <!-- Divings Field System mark. The v1 "journey constellation" (dark radial
-       gradients, blue/gold glow, 14px radius) is retired with the particle
-       identity; the idea it carried — steps rising — survives, restated in
-       Field System form: one hot signal, square corners, no gradient, no glow.
+  <!-- Divings guide mark — "the crossing".
+       Designed on the Paper canvas (Divings Design System → 03 Guide mark →
+       "Guide mark — making it specific", concept H3) and exported from there;
+       Paper is the source, this file is the export. Re-export rather than
+       hand-editing, then run: node scripts/build-icons.js
 
-       Drawn as ONE connected staircase silhouette rather than five separate
-       bars on purpose. Five 6px bars with 2px gaps disappear into mush at a
-       16px favicon; a solid form with notched corners keeps its shape all the
-       way down. The five steps live on the Journey Map, where they can be
-       read; the tab icon only has to say "Divings, and something is rising".
+       An orb crossing a waterline. Above the line it is solid; below it, it is
+       offset sideways and dissolved into contour — because that is what water
+       does to anything you look at through it. The break at the waterline is
+       the mark. It reads the hero story: what is under the surface is not
+       where you expect it to be.
 
-       Every coordinate is a multiple of 4, so at 16px (÷4) and 32px (÷2) each
-       edge lands on a whole pixel and the mark rasterises crisp instead of
-       fringing. Regenerate the PNGs with: node scripts/build-icons.js -->
+       Field System: safety #E23B12 ground, steel #141413 water, white orb.
+       No gradient, no glow, square corners.
+
+       The refracted contour is WHITE, not safety orange. Orange on steel is
+       3.9:1 — fine as a large graphic, but at 16px a 1.6px line lands on half
+       a pixel and the submerged half collapses into a brown smear. White is
+       16.6:1 and survives the downscale. Four heavier lines rather than six
+       thin ones for the same reason. -->
+  <defs>
+    <clipPath id="orb"><circle cx="32" cy="30" r="22"/></clipPath>
+    <clipPath id="orbRefracted"><circle cx="37" cy="31" r="21"/></clipPath>
+  </defs>
+
   <rect width="64" height="64" fill="#E23B12"/>
-  <path fill="#FFFFFF" d="M8 52V40h16V28h16V16h16v36z"/>
+  <rect y="34" width="64" height="30" fill="#141413"/>
+
+  <g clip-path="url(#orb)">
+    <rect width="64" height="34" fill="#FFFFFF"/>
+  </g>
+
+  <g clip-path="url(#orbRefracted)" fill="none" stroke="#FFFFFF" stroke-width="2.4">
+    <path d="M0 36.5h64"/>
+    <path d="M0 41h64"/>
+    <path d="M0 45h64"/>
+    <path d="M0 48.5h64"/>
+  </g>
 </svg>
