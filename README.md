@@ -57,7 +57,7 @@ js/icons.js         the twelve hairline outline icons, inline SVG
 js/content.js       ALL content as data — cards, missions, drills, mock samples, story
 js/app.js           hash router, flashcard deck engine, quiz engine, localStorage progress
 assets/fonts/       self-hosted Instrument Serif + IBM Plex Sans/Mono (OFL)
-assets/             logo mark, favicons, social preview image
+assets/             brand mark (mark.svg), generated favicons, social preview image
 scripts/            smoke test, contrast audit, preview-bundle build, link check
 ```
 
@@ -68,6 +68,7 @@ node scripts/smoke-test.js "$PWD"    # verifies routing, decks, drills, progress
 node scripts/check-contrast.js       # WCAG 2.2 AA audit of every colour pairing the stylesheet uses
 node scripts/build-preview.js        # regenerates demos/scaffold-preview.html (single-file bundle)
 node scripts/build-og.js             # regenerates assets/og-image.png from scripts/og/og-source.html (needs local Chrome)
+node scripts/build-icons.js          # regenerates the favicons + apple-touch icon from assets/mark.svg (needs local Chrome)
 ```
 
 Pushes to `main` deploy automatically via Vercel.
