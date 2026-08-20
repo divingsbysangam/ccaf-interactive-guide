@@ -50,20 +50,24 @@ The site is vanilla HTML/CSS/JS with zero dependencies — the same files that a
 **Structure**
 
 ```
-index.html          shell + hero
-css/main.css        design tokens and all styling
-js/particles.js     the ambient particle layer (the guide's visual identity)
+index.html          shell: Field System nav, subdomain bar, hero, inverse footer band
+css/main.css        Divings Field System tokens and all styling
+js/orb.js           the dot-lattice orbs (the site's entire motion budget)
+js/icons.js         the twelve hairline outline icons, inline SVG
 js/content.js       ALL content as data — cards, missions, drills, mock samples, story
-js/app.js           hash router, card + quiz engines, localStorage progress
+js/app.js           hash router, flashcard deck engine, quiz engine, localStorage progress
+assets/fonts/       self-hosted Instrument Serif + IBM Plex Sans/Mono (OFL)
 assets/             logo mark, favicons, social preview image
-scripts/            smoke test + preview-bundle build
+scripts/            smoke test, contrast audit, preview-bundle build, link check
 ```
 
 **Checks**
 
 ```bash
-node scripts/smoke-test.js "$PWD"    # verifies routing, cards, drills, progress, and hostile-localStorage safety
+node scripts/smoke-test.js "$PWD"    # verifies routing, decks, drills, progress, accessibility markup, hostile-localStorage safety
+node scripts/check-contrast.js       # WCAG 2.2 AA audit of every colour pairing the stylesheet uses
 node scripts/build-preview.js        # regenerates demos/scaffold-preview.html (single-file bundle)
+node scripts/build-og.js             # regenerates assets/og-image.png from scripts/og/og-source.html (needs local Chrome)
 ```
 
 Pushes to `main` deploy automatically via Vercel.
@@ -78,7 +82,25 @@ Pushes to `main` deploy automatically via Vercel.
 
 Spotted an inaccuracy, a broken link, or a card that could be clearer? Open an issue. Content lives almost entirely in `js/content.js`, so fixes are usually small, reviewable edits.
 
+## Design
+
+The guide runs on the **Divings Field System** — the shared design system for
+`divingsbysangam.com` and its subdomains. White ground, steel ink, formwork grey,
+and one hot signal (safety orange) used for action, never decoration; Instrument
+Serif for thought, IBM Plex Sans for product, IBM Plex Mono for coordinates;
+square corners, hairline rules, no drop shadows. Subdomains inherit the tokens
+and the chrome and may change density, not identity.
+
+Two colour roles are darkened or lightened siblings of the hot signal
+(`--color-primary-ink`, `--color-primary-on-inverse`) so small text on the chalk
+band and on the inverse footer still clears WCAG 2.2 AA — `node scripts/check-contrast.js`
+proves it on every run.
+
 ## Acknowledgements
+
+The dot-lattice orbs that mark journey progress are in the spirit of
+**[Jakub Antalik](https://antalik.com)**'s MIT *thinking-orbs* — reimplemented
+from scratch here in vanilla 2D canvas, with thanks.
 
 The open-source CCA-F community that made a guide like this possible, in particular the projects the Mock step links out to — see `CCA-F-Open-Source-Resources.md` for the full annotated inventory.
 

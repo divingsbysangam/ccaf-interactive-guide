@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CCA-F Interactive Guide — Divings by Sangam</title>
 <meta name="description" content="A free, interactive five-step study guide for the Claude Certified Architect – Foundations exam, built from a 977/1000 pass.">
-<meta name="theme-color" content="#070b14">
+<meta name="theme-color" content="#ffffff">
 
 <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
@@ -25,38 +25,74 @@
 <meta name="twitter:description" content="Five steps from blueprint to booked exam. Built from a 977/1000 pass. Free, no login.">
 <meta name="twitter:image" content="https://ccaf-guide.divingsbysangam.com/assets/og-image.png">
 
+<link rel="preload" href="assets/fonts/ibm-plex-sans-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/instrument-serif-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-<canvas id="ambient" aria-hidden="true"></canvas>
+
+<a class="skip-link" href="#view">Skip to content</a>
+
+<!-- Field System chrome: nav (template T01) -->
+<header class="site-nav">
+  <a class="brand" href="https://divingsbysangam.com" rel="noopener">
+    <span class="brand-mark" aria-hidden="true"></span>
+    <span class="brand-word">Divings</span>
+  </a>
+  <nav class="nav-links" aria-label="Site">
+    <a href="#/">Journey map</a>
+    <a href="https://divingsbysangam.com" rel="noopener">Hub</a>
+    <a class="btn signal" href="https://anthropic-partners.skilljar.com/claude-certified-architect-foundations-certification" target="_blank" rel="noopener">Book exam</a>
+  </nav>
+</header>
+
+<!-- Field System chrome: subdomain bar (template T02) -->
+<div class="subdomain-bar">
+  <span class="host">ccaf-guide.divingsbysangam.com</span>
+  <span class="desc">Certification · Claude Certified Architect — Foundations · Free, no login</span>
+</div>
 
 <div class="wrap">
   <header class="hero" id="hero">
-    <img class="mark" src="assets/mark.svg" alt="" width="72" height="72">
-    <p class="kicker">Divings by Sangam</p>
-    <h1>Pass CCA-F the way I did.</h1>
-    <p class="sub">
-      Five steps from <strong>blueprint to booked exam</strong> — quick-bit concepts, hands-on
-      missions, and drills that train you for how the questions are <em>actually</em> asked.
-    </p>
+    <div class="hero-top">
+      <canvas class="orb hero-orb" data-state="current" data-size="64" aria-hidden="true"></canvas>
+      <p class="kicker">Gella Sangamesh Gupta · CCA-F 977/1000 · Free guide</p>
+    </div>
+    <h1>Pass CCA-F the way I <em>did</em>.</h1>
+    <div class="hero-row">
+      <p class="sub">
+        Five steps from <strong>blueprint to booked exam</strong> — quick-bit concepts, hands-on
+        missions, and drills that train you for how the questions are <em>actually</em> asked.
+      </p>
+      <p class="hero-cta" id="hero-cta"></p>
+    </div>
     <div class="story" id="story">
       <!-- filled from CCAF_STORY.hero by app.js -->
     </div>
-    <p class="hero-cta" id="hero-cta"><a class="btn" href="#/step/blueprint">Start with the Blueprint</a></p>
   </header>
 
-  <main id="view" aria-live="polite">
+  <main id="view" tabindex="-1">
     <!-- Journey Map or a step page renders here -->
   </main>
-
-  <footer class="foot">
-    <span>Last verified against the official blueprint: <time id="last-verified"></time></span>
-    <span class="dot">·</span>
-    <span>Free &amp; open — no login, progress stays in your browser</span>
-  </footer>
+  <p class="sr-only" id="route-announce" role="status" aria-live="polite"></p>
 </div>
 
-<script src="js/particles.js"></script>
+<!-- Field System chrome: inverse insight band (template T01) -->
+<footer class="site-foot">
+  <div class="foot-main">
+    <p class="foot-kicker">Field note</p>
+    <p class="foot-line">The exam rewards judgment. Judgment comes from building, not from re-reading.</p>
+    <p class="foot-meta">
+      <span>Last verified against the official blueprint: <time id="last-verified"></time></span>
+      <span class="dot">·</span>
+      <span>Free &amp; open — no login, progress stays in your browser</span>
+    </p>
+  </div>
+  <p class="foot-coord">Bengaluru · Field System 1.0</p>
+</footer>
+
+<script src="js/orb.js"></script>
+<script src="js/icons.js"></script>
 <script src="js/content.js"></script>
 <script src="js/app.js"></script>
 </body>

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>OG source — CCA-F Interactive Guide</title>
+<!-- Source artwork for assets/og-image.png (1200×630).
+     Regenerate with:  node scripts/build-og.js
+     Divings Field System: white ground, steel ink, one hot signal, no shadows. -->
+<link rel="stylesheet" href="../../css/main.css">
+<style>
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body { display: block; background: var(--color-background); }
+  .og { position: relative; width: 1200px; height: 630px; display: flex; flex-direction: column; }
+  .og-nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 34px 64px; border-bottom: 1px solid var(--color-border);
+  }
+  .og-nav .right {
+    font-family: var(--font-mono); font-size: 15px; letter-spacing: var(--tracking-wider);
+    text-transform: uppercase; color: var(--color-muted);
+  }
+  .og-body { flex: 1 1 auto; display: flex; align-items: center; gap: 44px; padding: 0 64px; }
+  .og-copy { flex: 1 1 auto; }
+  .og-eyebrow {
+    font-family: var(--font-mono); font-size: 17px; letter-spacing: var(--tracking-wider);
+    text-transform: uppercase; font-weight: 500; color: var(--color-primary);
+  }
+  .og-title {
+    font-family: var(--font-serif); font-size: 88px; line-height: 0.98;
+    letter-spacing: -0.03em; color: var(--color-foreground); margin-top: 22px;
+  }
+  .og-title em { font-style: italic; }
+  .og-sub { font-size: 25px; line-height: 34px; color: var(--color-muted); margin-top: 26px; max-width: 720px; }
+  .og-sub strong { color: var(--color-foreground); font-weight: 600; }
+  .og-foot {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 26px 64px; background: var(--color-surface); border-top: 1px solid var(--color-border);
+    font-family: var(--font-mono); font-size: 16px; letter-spacing: var(--tracking-wider); text-transform: uppercase;
+  }
+  .og-foot .host { color: var(--color-primary-ink); }
+  .og-foot .coord { color: var(--color-muted); }
+  .brand-mark { width: 16px; height: 16px; flex: 0 0 16px; }
+  .brand-word { font-size: 21px; }
+</style>
+</head>
+<body>
+<div class="og">
+  <div class="og-nav">
+    <span class="brand">
+      <span class="brand-mark"></span>
+      <span class="brand-word">Divings</span>
+    </span>
+    <span class="right">Free · No login · Open source</span>
+  </div>
+
+  <div class="og-body">
+    <div class="og-copy">
+      <p class="og-eyebrow">Claude Certified Architect — Foundations</p>
+      <p class="og-title">Pass CCA-F the<br>way I <em>did</em>.</p>
+      <p class="og-sub">Five steps from <strong>blueprint to booked exam</strong> — quick-bit cards, hands-on labs, and drills built from a 977/1000 pass.</p>
+    </div>
+    <canvas class="orb" data-state="done" data-size="200"></canvas>
+  </div>
+
+  <div class="og-foot">
+    <span class="host">ccaf-guide.divingsbysangam.com</span>
+    <span class="coord">Bengaluru · Field System 1.0</span>
+  </div>
+</div>
+<script src="../../js/orb.js"></script>
+<script>CCAF_ORB.mountAll(document);</script>
+</body>
+</html>
