@@ -2,6 +2,11 @@
 // the social preview card, drawn in the Divings Field System with the same
 // stylesheet, the same self-hosted fonts and the same orb the site uses.
 // Needs a local Chrome. Run from the repo root:  node scripts/build-og.js
+//
+// Note: the orb picks a random start rotation on every load (that is the
+// approved wireframe behaviour), so re-running this always produces a
+// byte-different PNG even when nothing visual changed. Only commit the result
+// when the card itself actually changed.
 const { execFileSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');

@@ -31,6 +31,7 @@ els['hero-cta'] = makeEl('hero-cta');
 els['route-announce'] = makeEl('route-announce');
 els['step-prog'] = makeEl('step-prog');
 els['last-verified'] = makeEl('last-verified');
+els['foot-social'] = makeEl('foot-social');
 
 const listeners = {};
 global.window = global;
@@ -65,6 +66,19 @@ const fail = (msg) => { console.error('FAIL:', msg); process.exit(1); };
 const rerender = () => listeners.hashchange.forEach((f) => f());
 const go = (hash) => { location.hash = hash; rerender(); return els.view.innerHTML; };
 const list = (stepId, on) => { CCAF.storage.setListMode(stepId, on !== false); };
+
+// -------------------------------------------------- 0a) footer socials
+const soc = els['foot-social'].innerHTML;
+for (const u of [
+  'https://www.linkedin.com/in/gella-sangamesh-gupta-a35b5b1b8/',
+  'https://x.com/sangamesh_gupta',
+  'https://gellasangameshgupta.substack.com/',
+  'https://www.youtube.com/@divingsbysangam',
+]) if (!soc.includes(u)) fail(`footer social link missing: ${u}`);
+if ((soc.match(/class="ico-brand"/g) || []).length !== 4) fail('each social link needs its brand mark');
+if ((soc.match(/target="_blank" rel="noopener me"/g) || []).length !== 4) fail('socials must be new-tab, rel=noopener me');
+if ((soc.match(/\(opens in new tab\)/g) || []).length !== 4) fail('socials must announce the new tab (DIV-52 B6)');
+for (const n of ['LinkedIn', 'X', 'Substack', 'YouTube']) if (!soc.includes(`>${n}<`)) fail(`social needs a text label: ${n}`);
 
 // ---------------------------------------------------------------- 0) hero
 // story renders in full on a fresh visit; CTA starts as "Start with the Blueprint"

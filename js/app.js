@@ -17,6 +17,7 @@
   'use strict';
 
   const icon = (n, l) => (window.CCAF_ICONS ? window.CCAF_ICONS.icon(n, l) : '');
+  const brand = (n) => (window.CCAF_ICONS ? window.CCAF_ICONS.brand(n) : '');
   const NEW_TAB = ' <span class="sr-only">(opens in new tab)</span>';
 
   /* DIV-52 B6: every new-tab link says so to a screen reader. Content in
@@ -25,6 +26,23 @@
   function newTabHints(html) {
     return String(html == null ? '' : html).replace(/<a\b[^>]*target="_blank"[^>]*>([\s\S]*?)<\/a>/g,
       (m) => (m.includes('opens in new tab') ? m : m.replace(/<\/a>$/, `${NEW_TAB}</a>`)));
+  }
+
+  /* Sangam elsewhere — rendered rather than hard-coded in index.html so the
+     brand marks have one source (js/icons.js) and the new-tab hint is applied
+     the same way it is everywhere else (DIV-52 B6). */
+  const SOCIALS = [
+    { id: 'linkedin', name: 'LinkedIn', url: 'https://www.linkedin.com/in/gella-sangamesh-gupta-a35b5b1b8/' },
+    { id: 'x',        name: 'X',        url: 'https://x.com/sangamesh_gupta' },
+    { id: 'substack', name: 'Substack', url: 'https://gellasangameshgupta.substack.com/' },
+    { id: 'youtube',  name: 'YouTube',  url: 'https://www.youtube.com/@divingsbysangam' },
+  ];
+
+  function renderSocial() {
+    const el = document.getElementById('foot-social');
+    if (!el) return;
+    el.innerHTML = SOCIALS.map((s) => `
+      <a class="soc" href="${s.url}" target="_blank" rel="noopener me">${brand(s.id)}<span>${s.name}</span>${NEW_TAB}</a>`).join('');
   }
 
   // ---------- step definitions ----------
@@ -812,6 +830,7 @@
 
   addEventListener('hashchange', () => { routeHash = location.hash; resetArmed = null; render(); });
   renderStory();
+  renderSocial();
   renderLastVerified();
   if (window.CCAF_ORB) CCAF_ORB.mountAll(document);
   render();

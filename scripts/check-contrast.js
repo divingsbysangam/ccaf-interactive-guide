@@ -39,7 +39,9 @@ const PAIRS = [
   ['correct badge on its tint',     'success',              'success-soft', 4.5],
   ['wrong badge on paper',          'danger',               'background', 4.5],
   ['wrong badge on its tint',       'danger',               'danger-soft',  4.5],
-  ['stale-date warning as text',    'warning-ink',          'background', 4.5],
+  ['stale-date warning on steel',   'warning',              'inverse',    4.5],
+  ['warning as text on paper',      'warning-ink',          'background', 4.5],
+  ['social label on steel',         'inverse-muted',        'inverse',    4.5],
   ['hairline rule on paper',        'border',               'background', 1.0],
 ];
 

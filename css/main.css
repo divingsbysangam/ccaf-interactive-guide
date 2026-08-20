@@ -554,12 +554,24 @@ a:focus-visible, button:focus-visible, summary:focus-visible,
 }
 .foot-line { font-family: var(--font-serif); font-size: var(--text-2xl); line-height: var(--leading-relaxed); color: var(--color-inverse-foreground); }
 .foot-meta { font-size: var(--text-sm); color: var(--color-inverse-muted); }
-.foot-meta .dot { margin: 0 var(--spacing-2); }
-.foot-coord {
-  font-family: var(--font-mono); font-size: var(--text-xs);
-  letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-inverse-muted);
-}
 .site-foot time.stale { color: var(--color-warning); border-bottom: 1px dotted var(--color-warning); cursor: help; }
+
+/* Sangam elsewhere. Brand marks are the one filled exception to the hairline
+   icon language — a logo is a fixed shape and outlining it stops reading at
+   16px — so each one is paired with a mono label and never carries the meaning
+   alone. One accent still: hover goes to the on-inverse hot signal. */
+.foot-social { display: flex; align-items: center; gap: var(--spacing-6); flex-wrap: wrap; }
+.foot-social .soc {
+  display: inline-flex; align-items: center; gap: var(--spacing-2);
+  font-family: var(--font-mono); font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide); text-transform: uppercase;
+  color: var(--color-inverse-muted); text-decoration: none;
+  padding: var(--spacing-2) 0; min-height: 24px;      /* C3 target size */
+  transition: color .15s;
+}
+.foot-social .soc:hover { color: var(--color-primary-on-inverse); }
+.ico-brand { width: 16px; height: 16px; flex: 0 0 16px; fill: currentColor; stroke: none; }
+.site-foot a:focus-visible { outline-color: var(--color-primary-on-inverse); }
 
 /* ---------- responsive ---------- */
 @media (max-width: 900px) {
