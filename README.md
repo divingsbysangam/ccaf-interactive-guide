@@ -81,7 +81,9 @@ Pushes to `main` deploy automatically via Vercel.
 
 ## Contributing
 
-Spotted an inaccuracy, a broken link, or a card that could be clearer? Open an issue. Content lives almost entirely in `js/content.js`, so fixes are usually small, reviewable edits.
+Spotted an inaccuracy, a broken link, or a card that could be clearer? [Raise an issue](https://github.com/divingsbysangam/ccaf-interactive-guide/issues/new), or email <sangameshgella@divingsbysangam.com> if that's easier. Content lives almost entirely in `js/content.js`, so fixes are usually small, reviewable edits.
+
+Drill questions, mock samples and the blocker stories are reviewed by Sangam before they change; everything else is fair game for a pull request.
 
 ## Design
 

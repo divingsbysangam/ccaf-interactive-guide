@@ -81,6 +81,8 @@ for (const needle of [
   // shown as text too: a mailto: that no handler answers must still leave a
   // readable address behind, or the feedback route silently disappears
   '<span class="addr">sangameshgella@divingsbysangam.com</span>',
+  'https://github.com/divingsbysangam/ccaf-interactive-guide/issues/new',
+  'Raise an issue',
 ]) if (!indexHtml.includes(needle)) fail(`footer is missing required text: ${needle.replace(/\n\s+/g, ' ')}`);
 
 // exam facts that readers act on — a silent edit here misinforms someone

@@ -616,20 +616,26 @@ a:focus-visible, button:focus-visible, summary:focus-visible,
   color: var(--color-inverse-muted); max-width: 720px;
 }
 .foot-disclaimer strong { color: var(--color-inverse-foreground); font-weight: var(--font-weight-semibold); }
-.foot-feedback a {
-  display: inline-flex; align-items: center; gap: var(--spacing-2);
+/* Two routes, one line: an issue for people who read code, an address for
+   everyone else. The address is shown rather than hidden in the href, because
+   plenty of readers have no working mailto: handler (webmail, or a browser
+   registered for the scheme) and a link that silently does nothing is not a
+   feedback route. Visible text can still be read and copied. */
+.foot-feedback {
   font-family: var(--font-mono); font-size: var(--text-xs);
   letter-spacing: var(--tracking-wide); text-transform: uppercase;
+  line-height: var(--leading-snug); color: var(--color-inverse-muted);
+  max-width: 400px; text-align: right;
+}
+.foot-feedback a {
   color: var(--color-primary-on-inverse); text-decoration: none;
-  padding: var(--spacing-2) 0; min-height: 24px; white-space: nowrap;
+  padding: var(--spacing-1) 0;                 /* C3: keeps the hit area >= 24px */
 }
 .foot-feedback a:hover { color: var(--color-inverse-foreground); text-decoration: underline; text-underline-offset: 3px; }
-/* The address is shown, not hidden in the href. Plenty of people have no
-   working mailto: handler (webmail, or a browser registered for the scheme),
-   and a link that silently does nothing is not a feedback route. Visible text
-   can still be read and copied. */
 .foot-feedback .addr { text-transform: none; letter-spacing: 0; }
-.foot-feedback a { flex-wrap: wrap; white-space: normal; }
+/* Break between phrases, never inside one. Without this the line split at
+   "or drop an / email:", which reads like a typo. */
+.foot-feedback .nb { white-space: nowrap; }
 .ico-brand { width: 16px; height: 16px; flex: 0 0 16px; fill: currentColor; stroke: none; }
 .site-foot a:focus-visible { outline-color: var(--color-primary-on-inverse); }
 
@@ -650,6 +656,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible,
   .card { padding: var(--spacing-5) 0; border-left: 0; border-right: 0; }
   .card.read { border-left: 2px solid var(--color-primary); padding-left: var(--spacing-4); }
   .foot-line { font-size: var(--text-xl); line-height: var(--leading-normal); }
+  .foot-feedback { text-align: left; max-width: none; }
   .deck-meta { flex-direction: column; align-items: flex-start; gap: var(--spacing-1); }
   .step-title-row { flex-wrap: wrap; }
   /* the two mono coordinates collided into each other on a phone */
@@ -730,9 +737,10 @@ a:focus-visible, button:focus-visible, summary:focus-visible,
       Every scenario, question and explanation here is original writing, and this guide carries no
       real exam content and no dumps. Claude and Claude Certified Architect are trademarks of Anthropic, PBC.
     </p>
-    <p class="foot-feedback">
-      <a href="mailto:sangameshgella@divingsbysangam.com?subject=CCA-F%20Interactive%20Guide%20feedback">Found an error?
-        <span class="addr">sangameshgella@divingsbysangam.com</span></a>
+    <p class="foot-feedback"><span class="nb">Found an error?</span>
+      <span class="nb"><a href="https://github.com/divingsbysangam/ccaf-interactive-guide/issues/new" target="_blank" rel="noopener">Raise an issue<span class="sr-only"> (opens in new tab)</span></a></span>
+      <span class="nb">or drop an email:</span>
+      <a href="mailto:sangameshgella@divingsbysangam.com?subject=CCA-F%20Interactive%20Guide%20feedback"><span class="addr">sangameshgella@divingsbysangam.com</span></a>
     </p>
   </div>
 </footer>
