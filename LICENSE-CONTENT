@@ -1,0 +1,42 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+Copyright (c) 2026 Gella Sangamesh Gupta
+
+WHAT THIS COVERS
+
+The written material of the CCA-F Interactive Guide: the concept cards, the
+lab missions, the drill questions and their explanations, the mock samples,
+the hero story and the blocker waypoints. In practice that is the prose in
+js/content.js, the copy in index.html, and the documentation in docs/ and
+*.md.
+
+The code that renders it all is separately licensed under the MIT License;
+see LICENSE.
+
+WHAT YOU MAY DO
+
+Share it, adapt it, build on it, for any purpose including commercially, as
+long as you give appropriate credit, link to this licence, and say whether you
+changed anything. No additional restrictions.
+
+Full legal text: https://creativecommons.org/licenses/by/4.0/legalcode
+Plain-language summary: https://creativecommons.org/licenses/by/4.0/
+
+SUGGESTED ATTRIBUTION
+
+  "CCA-F Interactive Guide" by Gella Sangamesh Gupta, licensed under
+  CC BY 4.0. https://ccaf-guide.divingsbysangam.com
+
+WHAT THIS DOES NOT COVER
+
+Anything owned by someone else and merely referenced here. In particular:
+Anthropic's trademarks, including "Claude" and "Claude Certified Architect",
+and the exam blueprint, exam guide and any other Anthropic material this guide
+links to or describes. This guide is independent and unofficial, and it
+reproduces no real exam content. The external projects catalogued in
+CCA-F-Open-Source-Resources.md are linked, not included; each carries its own
+licence.
+
+The self-hosted typefaces in assets/fonts/ are third-party and carry their own
+terms: Instrument Serif, IBM Plex Sans and IBM Plex Mono are all licensed
+under the SIL Open Font License 1.1.

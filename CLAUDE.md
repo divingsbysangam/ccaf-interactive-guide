@@ -43,6 +43,8 @@ Five-step **Journey Map** as the landing page (blueprint → reading → labs �
 
 ## Content rules (legal — non-negotiable)
 
+* **The repo is public (since 2026-08-21) and dual-licensed:** code MIT (`LICENSE`), content CC BY 4.0 (`LICENSE-CONTENT`) — cards, missions, drills, explanations, the story and the docs. Neither covers Anthropic's trademarks or exam material; the fonts are OFL 1.1. Keep both files accurate if the content mix changes.
+
 * Only original content or adaptations of openly licensed sources, with visible attribution and a credits entry. Verified licenses: daronyondem/claude-architect-exam-guide (CC BY 4.0), hamzafarooq/claude-certified-architect (MIT). Re-verify licenses at adaptation time.
 
 * **Never** copy questions from claudecertificationguide.com or any third-party question bank, and never reproduce actual exam content (NDA). Original drill questions are style-inspired from the official blueprint only.

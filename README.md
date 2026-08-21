@@ -73,6 +73,24 @@ node scripts/build-icons.js          # regenerates the favicons + apple-touch ic
 
 Pushes to `main` deploy automatically via Vercel.
 
+## Licence
+
+Two licences, because a study guide is two different things.
+
+| | |
+|---|---|
+| **Code** (`js/`, `css/`, `scripts/`, `index.html` markup) | [MIT](LICENSE) |
+| **Content** (cards, missions, drills, explanations, the story, the docs) | [CC BY 4.0](LICENSE-CONTENT) |
+
+Reuse the content freely, including commercially, as long as you credit it and
+say what you changed. Suggested line:
+
+> "CCA-F Interactive Guide" by Gella Sangamesh Gupta, licensed under CC BY 4.0.
+> https://ccaf-guide.divingsbysangam.com
+
+Neither licence covers Anthropic's trademarks or exam material, which this
+guide only references. The self-hosted typefaces are OFL 1.1.
+
 ## Content and licensing
 
 - All cards, missions, questions, and explanations are **original writing**, style-inspired by the public exam blueprint. Nothing is reproduced from the actual exam (which is under NDA) or from any third-party question bank.
