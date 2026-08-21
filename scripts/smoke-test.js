@@ -78,6 +78,9 @@ for (const needle of [
   'original writing, and this guide carries no',
   'trademarks of Anthropic, PBC',
   'mailto:sangameshgella@divingsbysangam.com',
+  // shown as text too: a mailto: that no handler answers must still leave a
+  // readable address behind, or the feedback route silently disappears
+  '<span class="addr">sangameshgella@divingsbysangam.com</span>',
 ]) if (!indexHtml.includes(needle)) fail(`footer is missing required text: ${needle.replace(/\n\s+/g, ' ')}`);
 
 // exam facts that readers act on — a silent edit here misinforms someone

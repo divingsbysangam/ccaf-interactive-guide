@@ -624,6 +624,12 @@ a:focus-visible, button:focus-visible, summary:focus-visible,
   padding: var(--spacing-2) 0; min-height: 24px; white-space: nowrap;
 }
 .foot-feedback a:hover { color: var(--color-inverse-foreground); text-decoration: underline; text-underline-offset: 3px; }
+/* The address is shown, not hidden in the href. Plenty of people have no
+   working mailto: handler (webmail, or a browser registered for the scheme),
+   and a link that silently does nothing is not a feedback route. Visible text
+   can still be read and copied. */
+.foot-feedback .addr { text-transform: none; letter-spacing: 0; }
+.foot-feedback a { flex-wrap: wrap; white-space: normal; }
 .ico-brand { width: 16px; height: 16px; flex: 0 0 16px; fill: currentColor; stroke: none; }
 .site-foot a:focus-visible { outline-color: var(--color-primary-on-inverse); }
 
@@ -725,7 +731,8 @@ a:focus-visible, button:focus-visible, summary:focus-visible,
       real exam content and no dumps. Claude and Claude Certified Architect are trademarks of Anthropic, PBC.
     </p>
     <p class="foot-feedback">
-      <a href="mailto:sangameshgella@divingsbysangam.com?subject=CCA-F%20Interactive%20Guide%20%E2%80%94%20feedback">Found an error? Email me</a>
+      <a href="mailto:sangameshgella@divingsbysangam.com?subject=CCA-F%20Interactive%20Guide%20feedback">Found an error?
+        <span class="addr">sangameshgella@divingsbysangam.com</span></a>
     </p>
   </div>
 </footer>
