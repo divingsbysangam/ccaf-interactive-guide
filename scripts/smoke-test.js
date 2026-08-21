@@ -67,6 +67,26 @@ const rerender = () => listeners.hashchange.forEach((f) => f());
 const go = (hash) => { location.hash = hash; rerender(); return els.view.innerHTML; };
 const list = (stepId, on) => { CCAF.storage.setListMode(stepId, on !== false); };
 
+// ------------------------------- 0z) static footer guarantees (index.html)
+// These live in index.html rather than being rendered by app.js, so the DOM
+// harness can't see them — assert on the source instead. They are legal /
+// trust-critical, so a silent removal should fail the build.
+const indexHtml = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+for (const needle of [
+  'Independent and unofficial',
+  'Not affiliated with, endorsed by, or sponsored by Anthropic',
+  'original writing, and this guide carries no',
+  'trademarks of Anthropic, PBC',
+  'mailto:sangameshgella@divingsbysangam.com',
+]) if (!indexHtml.includes(needle)) fail(`footer is missing required text: ${needle.replace(/\n\s+/g, ' ')}`);
+
+// exam facts that readers act on — a silent edit here misinforms someone
+const contentSrc = fs.readFileSync(path.join(root, 'js/content.js'), 'utf8');
+if (!/720 is the pass mark/.test(contentSrc)) fail('pass mark (720) missing from the blueprint card');
+if (!/valid for 12 months/.test(contentSrc)) fail('certification validity (12 months) missing from the blueprint card');
+if (/multiple[- ]response/i.test(contentSrc)) fail('the exam is single-answer multiple choice: do not describe multiple-response items');
+if (!/select all that apply/i.test(contentSrc)) fail('the single-answer note went missing from the blueprint card');
+
 // -------------------------------------------------- 0a) footer socials
 const soc = els['foot-social'].innerHTML;
 for (const u of [
@@ -122,7 +142,7 @@ if (!html.includes('class="waypoint"')) fail('reading waypoint missing');
 if (!html.includes('mindset shift')) fail('reading waypoint should be blocker 1');
 if (!html.includes('From Sangam')) fail('waypoint kicker missing');
 if (!html.includes('aria-labelledby="wp-reading"')) fail('waypoint needs an accessible name (DIV-52 C6)');
-if (document.title !== 'Reading — CCA-F Interactive Guide') fail(`route title not set, got "${document.title}"`);
+if (document.title !== 'Reading · CCA-F Interactive Guide') fail(`route title not set, got "${document.title}"`);
 
 // Next marks the card read AND advances (Sangam's decision)
 CCAF.deckNext(CCAF.steps.find((s) => s.id === 'reading'));

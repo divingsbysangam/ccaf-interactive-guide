@@ -54,23 +54,23 @@
     },
     {
       id: 'reading', n: 2, title: 'Reading', ico: 'reading',
-      blurb: 'Quick-bit concept cards — two minutes each, with a "from zero" lane if agent-native is new territory.',
+      blurb: 'Quick-bit concept cards, two minutes each, with a "from zero" lane if agent-native is new territory.',
       lede: 'Bite-sized concepts across all five domains. Each card is a two-minute read with optional depth when you need it.',
     },
     {
       id: 'labs', n: 3, title: 'Labs', ico: 'labs',
-      blurb: 'Build small things in Claude Code yourself. The exam tests judgment — judgment comes from building.',
+      blurb: 'Build small things in Claude Code yourself. The exam tests judgment, and judgment comes from building.',
       lede: 'Guided missions you build yourself in Claude Code. The exam rewards implementation taste, and taste comes from reps.',
     },
     {
       id: 'drills', n: 4, title: 'Drills', ico: 'drills',
-      blurb: 'Analogy-framed questions with four close options — recognition training for the real exam style.',
+      blurb: 'Analogy-framed questions with four close options. Recognition training for the real exam style.',
       lede: 'The questions never name the concept they test. These drills train you to recognize it anyway.',
     },
     {
       id: 'mock', n: 5, title: 'Mock Exam', ico: 'mock',
       blurb: 'Feel the format, then finish on full-length community mocks. Then book your seat.',
-      lede: 'Sample the real feel here, then take full-length community mock exams — and book your seat.',
+      lede: 'Sample the real feel here, then take full-length community mock exams, and book your seat.',
     },
   ];
 
@@ -274,16 +274,20 @@
   function announce(msg) { if (announcer) announcer.textContent = msg; }
 
   function setTitle(suffix) {
-    try { document.title = suffix ? `${suffix} — CCA-F Interactive Guide` : 'CCA-F Interactive Guide — Divings by Sangam'; } catch { /* stubbed DOM */ }
+    try { document.title = suffix ? `${suffix} · CCA-F Interactive Guide` : 'CCA-F Interactive Guide · Divings by Sangam'; } catch { /* stubbed DOM */ }
   }
 
   /* DIV-42: first visit shows the whole story; once any progress exists it
-     collapses to the first paragraph behind a plain-language expander. */
+     collapses to the first paragraph behind a plain-language expander.
+     On a phone it starts collapsed either way — three paragraphs of prose push
+     the Journey Map about three screens down, and a first-time mobile visitor
+     is exactly who bounces before reaching it (same reasoning as DIV-41). */
   function renderStory() {
     const el = document.getElementById('story');
     if (!el || !story.hero) return;
+    const narrow = typeof innerWidth === 'number' && innerWidth <= 640;
     const rest = `<p>${story.hero.why}</p><p>${story.hero.result}</p><p class="story-sign">— Sangam</p>`;
-    if (!anyProgress()) {
+    if (!anyProgress() && !narrow) {
       el.innerHTML = `<p>${story.hero.lead}</p>${rest}`;
     } else {
       el.innerHTML = `<p>${story.hero.lead}</p>
@@ -300,7 +304,7 @@
     } else if (next) {
       el.innerHTML = `<a class="btn" href="#/step/${next.id}">Continue → ${next.title} ${icon('next')}</a>`;
     } else {
-      el.innerHTML = `<a class="btn" href="#/step/mock">All five steps done — book your exam ${icon('next')}</a>`;
+      el.innerHTML = `<a class="btn" href="#/step/mock">All five steps done, book your exam ${icon('next')}</a>`;
     }
   }
 
@@ -335,7 +339,7 @@
       const p = progressOf(s.id);
       const st = stepState(s.id);
       return `
-      <a class="step ${st}" href="#/step/${s.id}" aria-label="Step ${s.n}: ${s.title} — ${progressLabel(p)}">
+      <a class="step ${st}" href="#/step/${s.id}" aria-label="Step ${s.n}: ${s.title}. ${progressLabel(p)}">
         <span class="node"><canvas class="orb" data-state="${st}" data-size="48"></canvas></span>
         <span class="step-body">
           <span class="step-title-row"><span class="step-n">${String(s.n).padStart(2, '0')}</span><h3>${s.title}</h3></span>
@@ -346,7 +350,7 @@
     }).join('');
     /* DIV-45: one quiet line, only while there is nothing to lose */
     const hint = anyProgress() ? '' :
-      `<p class="map-hint">Work through the five steps in order. Reading a card or answering a drill fills this map in — nothing is sent anywhere, your progress just stays in this browser.</p>`;
+      `<p class="map-hint">Work through the five steps in order. Reading a card or answering a drill fills this map in. Nothing is sent anywhere; your progress just stays in this browser.</p>`;
     view.innerHTML = `
       <h2 class="sr-only">Your journey</h2>
       <div class="map-head"><p class="coord">05 steps · blueprint → booked exam</p>${up ? `<p class="coord">You are here · ${up.title}</p>` : `<p class="coord">Complete</p>`}</div>
@@ -358,7 +362,7 @@
   // ---------- card + question markup ----------
   function cardHTML(c, read, opts) {
     const o = opts || {};
-    const zeroLabel = c.zeroLabel || 'From zero — plain language &amp; a familiar-platform analogy';
+    const zeroLabel = c.zeroLabel || 'From zero: plain language and a familiar-platform analogy';
     const twistLabel = c.twistLabel || 'How the exam twists this';
     const markLabels = c.markLabels || ['Mark as read', '✓ Read'];
     const flashAttrs = o.flash
@@ -453,7 +457,7 @@
     const complete = progressOf(step.id).state === 'done';
     const nextStep = STEPS[step.n];
     const completePanel = complete ? `
-      <p class="deck-done coord">${icon('done')} ${step.title} complete${nextStep ? ` — <a href="#/step/${nextStep.id}">on to ${nextStep.title}</a>` : ' — you have finished the journey'}.</p>` : '';
+      <p class="deck-done coord">${icon('done')} ${step.title} complete${nextStep ? `. <a href="#/step/${nextStep.id}">On to ${nextStep.title}</a>` : ". You've finished the whole guide"}.</p>` : '';
 
     return `
       <section class="deck" data-step="${step.id}">
@@ -513,13 +517,13 @@
       <section class="domain">
         <header class="domain-head deck-meta">
           <h3 class="deck-domain">Full-length mock exams (community)</h3>
-          <span>each opens in a new tab — your progress here is untouched</span>
+          <span>each opens in a new tab; your progress here is untouched</span>
         </header>
         <div class="ext-panel">${links}</div>
       </section>
       <div class="book-cta">
         <p>Scoring comfortably on the mocks? You're ready.</p>
-        <a class="btn signal" href="https://anthropic-partners.skilljar.com/claude-certified-architect-foundations-certification" target="_blank" rel="noopener">Book your exam — official page${NEW_TAB} ${icon('external')}</a>
+        <a class="btn signal" href="https://anthropic-partners.skilljar.com/claude-certified-architect-foundations-certification" target="_blank" rel="noopener">Book your exam on the official page${NEW_TAB} ${icon('external')}</a>
       </div>`;
   }
 
@@ -548,7 +552,7 @@
     if (!deck.total) {
       body = `<div class="placeholder">
            <b>${step.title} content is being written.</b><br>
-           Quick-bit cards land here — each a two-minute read with optional "from zero" and
+           Quick-bit cards land here, each a two-minute read with optional "from zero" and
            "how the exam twists this" layers.
          </div>`;
     } else if (storage.listMode(step.id)) {
@@ -824,7 +828,7 @@
     const ageDays = (Date.now() - d.getTime()) / 86400000;
     if (ageDays > 120) {
       el.classList.add('stale');
-      el.title = 'This guide is overdue for its quarterly check against the official blueprint — verify facts against the official exam guide.';
+      el.title = 'This guide is overdue for its quarterly check against the official blueprint. Verify facts against the official exam guide.';
     }
   }
 

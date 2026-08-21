@@ -570,6 +570,30 @@ a:focus-visible, button:focus-visible, summary:focus-visible,
   transition: color .15s;
 }
 .foot-social .soc:hover { color: var(--color-primary-on-inverse); }
+
+/* Fine print: the legal line and the one feedback route. Full width under the
+   band's two columns, separated by a hairline in formwork so it reads as a
+   footnote rather than as another column. */
+.foot-fine {
+  flex: 1 0 100%;
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: var(--spacing-8); flex-wrap: wrap;
+  margin-top: var(--spacing-8); padding-top: var(--spacing-5);
+  border-top: 1px solid var(--color-formwork);
+}
+.foot-disclaimer {
+  font-size: var(--text-xs); line-height: var(--leading-tight);
+  color: var(--color-inverse-muted); max-width: 720px;
+}
+.foot-disclaimer strong { color: var(--color-inverse-foreground); font-weight: var(--font-weight-semibold); }
+.foot-feedback a {
+  display: inline-flex; align-items: center; gap: var(--spacing-2);
+  font-family: var(--font-mono); font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide); text-transform: uppercase;
+  color: var(--color-primary-on-inverse); text-decoration: none;
+  padding: var(--spacing-2) 0; min-height: 24px; white-space: nowrap;
+}
+.foot-feedback a:hover { color: var(--color-inverse-foreground); text-decoration: underline; text-underline-offset: 3px; }
 .ico-brand { width: 16px; height: 16px; flex: 0 0 16px; fill: currentColor; stroke: none; }
 .site-foot a:focus-visible { outline-color: var(--color-primary-on-inverse); }
 
@@ -592,6 +616,9 @@ a:focus-visible, button:focus-visible, summary:focus-visible,
   .foot-line { font-size: var(--text-xl); line-height: var(--leading-normal); }
   .deck-meta { flex-direction: column; align-items: flex-start; gap: var(--spacing-1); }
   .step-title-row { flex-wrap: wrap; }
+  /* the two mono coordinates collided into each other on a phone */
+  .map-head { flex-direction: column; align-items: flex-start; gap: var(--spacing-1); }
+  .foot-fine { gap: var(--spacing-4); }
 }
 
 /* ---------- reduced motion ---------- */

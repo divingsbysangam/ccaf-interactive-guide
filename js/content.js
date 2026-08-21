@@ -18,20 +18,22 @@ window.CCAF_CARDS = {
       minutes: 2,
       quick: `
         <p>CCA-F is a <strong>proctored, 60-question multiple-choice exam</strong> taken in
-        <strong>120 minutes</strong> for <strong>$125</strong>, delivered through Pearson VUE —
-        online with a webcam proctor, or at a test center. Results are reported on a scaled
-        score out of 1000. The questions are scenario-based: they describe a situation and ask
-        for the best architectural judgment, not a definition.</p>`,
+        <strong>120 minutes</strong> for <strong>$125</strong>, delivered through Pearson VUE, either
+        online with a webcam proctor or at a test center. Results are reported on a scaled
+        score out of 1000, and <strong>720 is the pass mark</strong>. The certification is
+        <strong>valid for 12 months</strong>, so diary the recert a year out. The questions are
+        scenario-based: they describe a situation and ask for the best architectural judgment,
+        not a definition. One right answer each; nothing asks you to select all that apply.</p>`,
       fromZero: `
         <p>Never taken a proctored cert? "Proctored" means a live invigilator checks your ID and
-        watches via webcam — clear desk, no second monitor, no phone. Book through the official
+        watches via webcam: clear desk, no second monitor, no phone. Book through the official
         certification page (below); online slots are usually available within days. If your
         home setup is unreliable, a Pearson VUE test center removes all the tech risk.</p>`,
       examTwist: `
-        <p>120 minutes for 60 questions sounds generous — it isn't, because every question is a
+        <p>120 minutes for 60 questions sounds generous. It isn't, because every question is a
         paragraph-long scenario. Budget <strong>~90 seconds a question</strong>, flag anything
-        that drags, and bank the saved time for the flagged ones. Finishing the first pass with
-        20 minutes to review beats agonizing sequentially.</p>`,
+        that drags, and bank the saved time for the ones you flagged. Finishing the first pass
+        with 20 minutes left to review beats agonizing over each question in order.</p>`,
     },
     {
       id: 'five-domains',
@@ -40,11 +42,11 @@ window.CCAF_CARDS = {
       quick: `
         <p>Everything on the exam maps to five weighted domains:</p>
         <ul>
-          <li><strong>Agentic Architecture &amp; Orchestration — 27%</strong></li>
-          <li><strong>Claude Code Configuration &amp; Workflows — 20%</strong></li>
-          <li><strong>Prompt Engineering &amp; Structured Output — 20%</strong></li>
-          <li><strong>Tool Design &amp; MCP Integration — 18%</strong></li>
-          <li><strong>Context Management &amp; Reliability — 15%</strong></li>
+          <li><strong>Agentic Architecture &amp; Orchestration: 27%</strong></li>
+          <li><strong>Claude Code Configuration &amp; Workflows: 20%</strong></li>
+          <li><strong>Prompt Engineering &amp; Structured Output: 20%</strong></li>
+          <li><strong>Tool Design &amp; MCP Integration: 18%</strong></li>
+          <li><strong>Context Management &amp; Reliability: 15%</strong></li>
         </ul>`,
       fromZero: `
         <p>In one line each: <em>agentic architecture</em> = when to use one agent, many agents,
@@ -54,9 +56,9 @@ window.CCAF_CARDS = {
         <em>context management</em> = living within the context window without losing the plot.</p>`,
       examTwist: `
         <p>Weights are your study budget: the heaviest domain (27%) supplies roughly one in four
-        questions, so a shaky day on agent orchestration costs more than one on context
-        management. Read the blueprint's task statements literally — each one is the seed of a
-        scenario you'll recognize on exam day.</p>`,
+        questions, so a shaky day on agent orchestration costs you more than a shaky day on
+        context management. Read the blueprint's task statements literally; each one is the
+        seed of a scenario you'll recognize on exam day.</p>`,
     },
     {
       id: 'official-sources',
@@ -65,19 +67,19 @@ window.CCAF_CARDS = {
       quick: `
         <p>Start from the source before any community content:</p>
         <ul>
-          <li><a href="https://anthropic-partners.skilljar.com/claude-certified-architect-foundations-certification" target="_blank" rel="noopener">Official certification page</a> — registration ($125), the exam guide &amp; blueprint PDF, and the exam policies. The blueprint's domain/task breakdown is what this whole guide is organized around.</li>
-          <li><a href="https://platform.claude.com/docs" target="_blank" rel="noopener">Claude platform docs</a> — the API, tool use, MCP, structured outputs, context management: the primary material the exam draws on.</li>
-          <li><a href="https://code.claude.com/docs" target="_blank" rel="noopener">Claude Code docs</a> — configuration, CLAUDE.md, hooks, skills, and workflows: the second-heaviest exam domain.</li>
-          <li><a href="https://www.freecodecamp.org/news/claude-certified-architect-foundations-prep-for-anthropic-s-new-certification-exam/" target="_blank" rel="noopener">freeCodeCamp prep course</a> — a free full-length video course if you want a lecture format alongside this guide.</li>
+          <li><a href="https://anthropic-partners.skilljar.com/claude-certified-architect-foundations-certification" target="_blank" rel="noopener">Official certification page</a>: registration ($125), the exam guide and blueprint PDF, and the exam policies. The blueprint's domain/task breakdown is what this whole guide is organized around.</li>
+          <li><a href="https://platform.claude.com/docs" target="_blank" rel="noopener">Claude platform docs</a>. The API, tool use, MCP, structured outputs and context management all live here, and this is the primary material the exam draws on.</li>
+          <li><a href="https://code.claude.com/docs" target="_blank" rel="noopener">Claude Code docs</a>: configuration, CLAUDE.md, hooks, skills and workflows. Second-heaviest domain on the exam.</li>
+          <li><a href="https://www.freecodecamp.org/news/claude-certified-architect-foundations-prep-for-anthropic-s-new-certification-exam/" target="_blank" rel="noopener">freeCodeCamp prep course</a>, a free full-length video course if you'd rather have a lecture format running alongside this guide.</li>
         </ul>`,
       fromZero: `
-        <p>Suggested order: skim the official exam guide PDF once (don't study it — just learn
-        the map), then come back here and work the five steps. The PDF's task statements will
+        <p>Suggested order: skim the official exam guide PDF once, without studying it, just to
+        learn the map. Then come back here and work the five steps. The PDF's task statements will
         feel abstract now and obvious by the time you finish the Drills step.</p>`,
       examTwist: `
         <p>When two study sources disagree, <strong>the blueprint wins</strong>. Community
-        guides (this one included) lag behind blueprint revisions — check the "last verified"
-        date in the footer, and if the official PDF changed recently, trust it over any
+        guides (this one included) lag behind blueprint revisions, so check the "last verified"
+        date in the footer; and if the official PDF changed recently, trust it over any
         summary.</p>`,
     },
   ],
@@ -88,43 +90,43 @@ window.CCAF_CARDS = {
       title: 'Workflow or agent? The first fork',
       minutes: 2,
       quick: `
-        <p>The first architectural question is never "which model" — it's <strong>how much
+        <p>The first architectural question is never "which model". It's <strong>how much
         autonomy the problem needs</strong>. If the steps are known in advance (classify, then
         extract, then format), build a <em>workflow</em>: fixed steps with LLM calls inside.
-        If the model must decide its own path — which tools, how many steps, when it's done —
-        that's an <em>agent</em>. Workflows are cheaper, faster, and easier to debug; agents
+        If the model has to decide its own path (which tools, how many
+        steps, when it's finished), that's an <em>agent</em>. Workflows are cheaper, faster, and easier to debug; agents
         buy flexibility at the cost of predictability.</p>`,
       fromZero: `
-        <p>Salesforce lens: a workflow is a <em>Flow</em> — every branch drawn in advance. An
-        agent is like handing a case to a senior rep: you define the goal and the tools they
-        may use, and they choose the path. You'd never hire a rep to do what a Flow does
-        reliably for free — same rule here.</p>`,
+        <p>Salesforce lens: a workflow is a <em>Flow</em>, every branch drawn in advance. An agent
+        is closer to handing a case to a senior rep, where you set the goal and the tools they
+        may use and they pick the path. You'd never hire a rep to do what a Flow already does
+        reliably for free. Same rule here.</p>`,
       examTwist: `
         <p>Scenarios describing a <strong>repeatable, well-defined pipeline</strong> are bait
         for over-engineering: the "build an autonomous agent" option sounds impressive and is
-        wrong. Pick the fixed workflow/chained-calls answer whenever the steps are knowable in
-        advance. The reverse trap exists too — genuinely open-ended tasks where a rigid
-        pipeline would fail.</p>`,
+        wrong. Pick the fixed workflow or chained-calls answer whenever the steps are knowable in
+        advance. The reverse trap is there too: truly open-ended tasks where a rigid pipeline
+        falls over.</p>`,
     },
     {
       id: 'single-vs-multi',
       domain: 'agentic',
-      title: 'One agent beats five — until it doesn\'t',
+      title: 'One agent beats five, until it doesn\'t',
       minutes: 2,
       quick: `
         <p>Default to <strong>one agent with good tools</strong>. Add more agents only when a
-        real constraint forces it: context that won't fit one window, genuinely parallel
-        workstreams, or subtasks needing different instructions or permissions. Every added
-        agent brings coordination cost — handoffs lose information, and failures multiply.</p>`,
+        real constraint forces it: context that won't fit one window, truly parallel workstreams,
+        or subtasks that need different instructions or permissions. Every agent you add brings
+        coordination cost, because handoffs lose information and failures multiply.</p>`,
       fromZero: `
         <p>Think of one admin with the right permission sets versus a committee. The committee
-        wins only when the work truly splits — separate territories, separate skills. Otherwise
-        meetings (agent handoffs) eat all the gains.</p>`,
+        wins only when the work truly splits into separate territories and separate skills.
+        Otherwise the meetings, which here are agent handoffs, eat every gain you hoped for.</p>`,
       examTwist: `
         <p>Multi-agent options glitter on the exam. The correct answer is usually the
-        <strong>simplest architecture that satisfies the stated constraint</strong> — and the
-        constraint is in the scenario's wording: "research spans dozens of documents in
-        parallel" justifies subagents; "handle a support ticket" does not.</p>`,
+        <strong>simplest architecture that satisfies the stated constraint</strong>, and the
+        constraint is sitting in the scenario's wording. "Research spans dozens of documents in
+        parallel" justifies subagents. "Handle a support ticket" doesn't.</p>`,
     },
     {
       id: 'orchestrator-workers',
@@ -134,18 +136,19 @@ window.CCAF_CARDS = {
       quick: `
         <p>The workhorse multi-agent pattern: a <strong>lead agent decomposes the task</strong>
         and dispatches scoped subagents, each with its <em>own clean context window</em> and a
-        narrow brief. Subagents return summaries, not transcripts — the orchestrator holds the
-        big picture and integrates results. Use it for parallel research, wide codebase sweeps,
+        narrow brief. Subagents return summaries rather than transcripts, so the orchestrator keeps
+        the big picture and integrates what comes back. Use it for parallel research, wide codebase sweeps,
         or specialist review passes.</p>`,
       fromZero: `
         <p>It's case swarming: a triage lead breaks a messy escalation into work items and
-        routes each to a specialist queue. No specialist reads the whole case history — each
-        gets exactly the slice they need, and the lead assembles the resolution.</p>`,
+        routes each to a specialist queue. No specialist reads the whole case history; each one gets
+        exactly the slice they need, and the lead assembles the resolution.</p>`,
       examTwist: `
         <p>Cue phrases that point here: "context window fills up," "independent
         investigations," "parallel exploration," "specialist reviewers." When the scenario
-        stresses <strong>isolation of contexts</strong> or <strong>fan-out</strong>, the answer
-        is orchestrator + subagents — not one bigger prompt, and not fine-tuning.</p>`,
+        stresses <strong>isolation of contexts</strong> or <strong>fan-out</strong>, reach for the
+        orchestrator and subagents. One bigger prompt won't do it, and neither will
+        fine-tuning.</p>`,
     },
     {
       id: 'api-sdk-code',
@@ -154,22 +157,23 @@ window.CCAF_CARDS = {
       minutes: 2,
       quick: `
         <p>Three ways to build, in rising order of built-in machinery: the <strong>Messages
-        API</strong> gives raw model access — you own the loop, tool execution, and state. The
+        API</strong> gives you raw model access, which means you own the loop, the tool execution
+        and the state. The
         <strong>Agent SDK</strong> ships the agentic harness (tool loop, file access, subagents,
         hooks) as a library for production apps. <strong>Claude Code</strong> is the same
         harness as an interactive developer tool. Rule of thumb: API for custom control,
         SDK for shipping agents, Claude Code for building software with an agent.</p>`,
       fromZero: `
-        <p>Rough analogy: Messages API is raw Apex — total control, you write everything. The
-        Agent SDK is the platform's standard objects and automation — proven machinery you
-        configure instead of rebuild. Claude Code is the setup UI on top. Choose by how much
-        of the machine you want to own.</p>`,
+        <p>Rough analogy: the Messages API is raw Apex, total control, you write everything. The
+        Agent SDK is closer to the platform's standard objects and automation, proven machinery
+        you configure instead of rebuild. Claude Code is the setup UI sitting on top of it all.
+        Choose by how much of the machine you actually want to own.</p>`,
       examTwist: `
         <p>Scenario says "team needs a production agent with tool use and file access,
         <em>minimal harness code</em>" → Agent SDK. "Fine-grained control over every token and
         a custom execution loop" → Messages API. "Developers automating their own workflow" →
-        Claude Code. The wrong options are the same three names shuffled — match the
-        <strong>ownership level</strong>, not the buzzword.</p>`,
+        Claude Code. The wrong options are those same three names shuffled, so match on the
+        <strong>ownership level</strong> rather than the buzzword.</p>`,
     },
     {
       id: 'autonomy-brakes',
@@ -178,8 +182,8 @@ window.CCAF_CARDS = {
       minutes: 2,
       quick: `
         <p>Agent safety is an <strong>architecture property, not a prompt property</strong>.
-        Instructions steer probabilistically; for actions that are irreversible or expensive —
-        deletes, payments, sending messages — you gate with mechanisms: permission allowlists,
+        Instructions steer probabilistically, so for anything irreversible or expensive (deletes,
+        payments, sending messages) you gate with mechanisms: permission allowlists,
         human approval on specific tools, sandboxed execution, and least-privilege credentials.
         The prompt says "be careful"; the harness makes careless impossible.</p>`,
       fromZero: `
@@ -189,9 +193,9 @@ window.CCAF_CARDS = {
       examTwist: `
         <p>When a scenario involves a destructive or customer-visible action, the answer
         involving <strong>deterministic gating</strong> (approval step, permission rule, scoped
-        credentials) beats every "improve the system prompt" option. Prompts are probabilistic;
-        hooks and permissions are deterministic — the exam tests whether you know which layer
-        to reach for.</p>`,
+        credentials) beats every "improve the system prompt" option. Prompts are probabilistic while
+        hooks and permissions are deterministic, and the exam is testing whether you know which
+        layer to reach for.</p>`,
     },
     {
       id: 'measure-agents',
@@ -201,17 +205,17 @@ window.CCAF_CARDS = {
       quick: `
         <p>Production agents need <strong>evals</strong>: a fixed set of representative tasks,
         scored automatically (exact checks, rubric graders, or LLM-as-judge), run on every
-        change. Without them, prompt edits are vibes — a fix for one case silently breaks
-        three others. Start small: a dozen real cases beats a hundred synthetic ones.</p>`,
+        change. Without them you're editing prompts on vibes, and a fix for one case quietly breaks
+        three others. Start small. A dozen real cases beats a hundred synthetic ones.</p>`,
       fromZero: `
         <p>This is your regression suite and UAT rolled into one. You'd never deploy an Apex
         change without tests green; don't ship a prompt or tool change without the eval set
         green either.</p>`,
       examTwist: `
-        <p>Cue: "quality dropped after we changed the prompt — what should the team have done?"
-        The answer is <strong>establish evals/baselines before iterating</strong>, not "use a
-        bigger model" and not "add more instructions." Anything resembling measure-first is
-        usually the intended choice.</p>`,
+        <p>Cue: "quality dropped after we changed the prompt, what should the team have done?" The
+        answer is <strong>establish evals and baselines before iterating</strong>. It isn't "use
+        a bigger model" and it isn't "add more instructions." Whichever option amounts to
+        measure first is usually the intended one.</p>`,
     },
     {
       id: 'claude-md-brief',
@@ -222,47 +226,47 @@ window.CCAF_CARDS = {
         <p><strong>CLAUDE.md</strong> is a file at your project root that Claude Code loads
         into every session: conventions, commands, architecture notes, rules. It's how a team
         gets consistent behavior without re-explaining the project each time. Keep it short and
-        binding — a page of load-bearing rules beats ten pages of description, because every
-        line spends context budget on every request.</p>`,
+        binding. A page of load-bearing rules beats ten pages of description, because every line
+        of it spends context budget on every single request.</p>`,
       fromZero: `
-        <p>Think of the onboarding doc you wish every new admin read before touching your org —
-        except here it's actually read, every single session, automatically. What goes in it:
+        <p>Think of the onboarding doc you wish every new admin read before touching your org,
+        except this one really does get read, every session, automatically. What goes in it:
         "tests run with X," "never edit generated files," "deploys work like Y."</p>`,
       examTwist: `
         <p>Cue: "the team keeps getting inconsistent behavior across sessions" or "how do we
-        make the agent follow project conventions?" The answer is a checked-in CLAUDE.md — not
-        longer per-request prompts, and not a bigger model. If the scenario stresses
-        <em>persistence across sessions</em>, it's this.</p>`,
+        make the agent follow project conventions?" The answer is a checked-in CLAUDE.md. Longer
+        per-request prompts won't fix it and a bigger model certainly won't. If the scenario
+        leans on <em>persistence across sessions</em>, it's this.</p>`,
     },
     {
       id: 'hooks-deterministic',
       domain: 'claude-code',
-      title: 'Hooks: rules that cannot be ignored',
+      title: 'Hooks are rules that can\'t be ignored',
       minutes: 2,
       quick: `
-        <p>Instructions in prompts are <em>probabilistic</em> — usually followed, never
+        <p>Instructions in prompts are <em>probabilistic</em>, usually followed and never
         guaranteed. <strong>Hooks</strong> are shell commands that run automatically on events
         (before a tool call, after an edit, on session start) and can block, modify, or react
-        deterministically. Policy that must hold 100% of the time — "never touch prod config,"
-        "always run the formatter" — belongs in a hook, not a sentence.</p>`,
+        deterministically. Policy that has to hold 100% of the time, like "never touch prod config"
+        or "always run the formatter," belongs in a hook rather than in a sentence.</p>`,
       fromZero: `
         <p>Salesforce lens: a prompt instruction is a help-text asking users to be careful; a
         hook is the validation rule that simply won't let the record save. You already know
         which one auditors trust.</p>`,
       examTwist: `
         <p>The word <strong>"must"</strong> or <strong>"never"</strong> in a scenario is the
-        tell. Options offering "add it to the system prompt" are the trap; enforcement
-        questions want the deterministic mechanism — a hook, a permission rule, or both.</p>`,
+        tell. Options offering "add it to the system prompt" are the trap, because enforcement
+        questions want the deterministic mechanism: a hook, a permission rule, or both.</p>`,
     },
     {
       id: 'skills-package-workflows',
       domain: 'claude-code',
-      title: 'Skills: packaged, repeatable workflows',
+      title: 'Skills package the prompt that worked',
       minutes: 2,
       quick: `
         <p>A <strong>skill</strong> is a folder of instructions (plus optional scripts and
-        resources) that Claude loads on demand for a specific kind of task — a release
-        checklist, a review playbook, a house writing style. Slash commands invoke them
+        resources) that Claude loads on demand for one kind of task, whether that's a release
+        checklist, a review playbook or a house writing style. Slash commands invoke them
         explicitly. Skills turn "the prompt that worked" into a versioned, shareable asset
         instead of something living in one person's chat history.</p>`,
       fromZero: `
@@ -271,13 +275,13 @@ window.CCAF_CARDS = {
         the same instructions twice, that's a skill asking to exist.</p>`,
       examTwist: `
         <p>Cue: "a multi-step process the team performs repeatedly" or "how do we standardize
-        this workflow across the team?" → package it as a skill. Distinguish from CLAUDE.md
-        (always-on project rules) — skills are <em>on-demand procedures</em>.</p>`,
+        this workflow across the team?" → package it as a skill. Don't confuse it with CLAUDE.md,
+        which carries always-on project rules; skills are <em>on-demand procedures</em>.</p>`,
     },
     {
       id: 'permissions-least-privilege',
       domain: 'claude-code',
-      title: 'Permissions: least privilege for agents',
+      title: 'Least privilege, but for agents',
       minutes: 2,
       quick: `
         <p>Claude Code asks before running tools; <strong>permission settings and
@@ -287,32 +291,32 @@ window.CCAF_CARDS = {
         and scope access to the directories the task actually needs.</p>`,
       fromZero: `
         <p>Profiles and permission sets, but for an agent: nobody gives every user Modify All
-        Data just to close cases. Same instinct — grant the minimum that lets the work
-        happen, and widen deliberately, not by default.</p>`,
+        Data just to close cases. Same instinct applies: grant the minimum that lets the work
+        happen, then widen deliberately rather than by default.</p>`,
       examTwist: `
         <p>Scenarios about <strong>unattended or CI-based</strong> agent runs turn on this:
-        with no human at the prompt, the answer is a pre-configured allowlist plus denied
-        dangerous actions — not "the agent will ask" (it can't) and not full autonomy.</p>`,
+        with no human at the prompt, the answer is a pre-configured allowlist plus denied dangerous
+        actions. "The agent will ask" is wrong, because it can't, and full autonomy is worse.</p>`,
     },
     {
       id: 'headless-ci',
       domain: 'claude-code',
-      title: 'Beyond the terminal: headless and CI',
+      title: 'It also runs headless, inside CI',
       minutes: 2,
       quick: `
-        <p>Claude Code isn't only interactive: it runs <strong>headless</strong> — scripted
-        invocations with a prompt, pre-set permissions, and structured output — which is how
-        you wire it into CI pipelines, scheduled jobs, and automation (review every PR, triage
-        new issues, refresh docs). The same configuration surface (CLAUDE.md, hooks, skills,
+        <p>Claude Code isn't only interactive. It also runs <strong>headless</strong>, meaning
+        scripted invocations with a prompt, pre-set permissions and structured output, and
+        that's how you wire it into CI pipelines, scheduled jobs and automation such as
+        reviewing every PR, triaging new issues or refreshing docs. The same configuration surface (CLAUDE.md, hooks, skills,
         allowlists) governs both modes, so behavior stays consistent.</p>`,
       fromZero: `
-        <p>Interactive mode is you working the org by hand; headless is the scheduled batch
-        job. Same permissions model underneath — which is exactly why the permissions card
-        matters before this one.</p>`,
+        <p>Interactive mode is you working the org by hand; headless is the scheduled batch job.
+        The permissions model underneath is identical, which is exactly why the permissions card
+        comes before this one.</p>`,
       examTwist: `
         <p>Cue: "automatically on every pull request" or "nightly." The intended answer runs
-        Claude Code non-interactively inside the pipeline with explicit permissions — watch
-        for wrong options that assume a human approving each step.</p>`,
+        Claude Code non-interactively inside the pipeline with explicit permissions. Watch for the
+        wrong options, which quietly assume a human is there approving each step.</p>`,
     },
     {
       id: 'system-prompt-contract',
@@ -321,14 +325,14 @@ window.CCAF_CARDS = {
       minutes: 2,
       quick: `
         <p>Stable behavior lives in the <strong>system prompt</strong>: role, tone, hard
-        constraints, output format, what to do when unsure. Per-message prompts carry the
-        variable part — the task at hand. Specific beats vague ("cite the section number for
+        constraints, output format, what to do when unsure. Per-message prompts carry the variable
+        part, which is the task at hand. Specific beats vague ("cite the section number for
         every claim" vs "be accurate"), and positive instruction beats prohibition ("answer
         only from the provided document" vs "don't make things up").</p>`,
       fromZero: `
-        <p>It's the job description versus the daily task list. You don't re-negotiate
-        someone's role in every meeting — and if an assistant keeps making the same mistake,
-        you fix the job description once, not every conversation.</p>`,
+        <p>It's the job description versus the daily task list. You don't renegotiate someone's role
+        in every meeting, and when an assistant keeps making the same mistake you fix the job
+        description once instead of patching every conversation.</p>`,
       examTwist: `
         <p>Cue: "the assistant repeatedly does X across many conversations." Recurring-behavior
         problems are <strong>system-prompt problems</strong>; one-off task problems are user-prompt
@@ -340,7 +344,7 @@ window.CCAF_CARDS = {
       title: 'JSON you can actually parse',
       minutes: 2,
       quick: `
-        <p>When output feeds code, don't ask nicely — <strong>enforce structure</strong>. The
+        <p>When the output feeds code, don't ask nicely. <strong>Enforce the structure</strong>. The
         reliable ladder: use the API's structured-output / schema features where available;
         otherwise define a tool whose input schema <em>is</em> your desired shape; validate
         the result and retry on failure. Free-text JSON requests ("respond only in JSON,
@@ -352,49 +356,48 @@ window.CCAF_CARDS = {
       examTwist: `
         <p>Cue: "a downstream system consumes the response" or "parsing fails intermittently."
         The intended answer enforces a schema (structured outputs or tool definitions +
-        validation), never "improve the prompt wording" alone. All four options will mention
-        JSON — pick the <em>enforced</em> one.</p>`,
+        validation), never "improve the prompt wording" on its own. All four options will mention
+        JSON, so pick the <em>enforced</em> one.</p>`,
     },
     {
       id: 'few-shot-examples',
       domain: 'prompting',
-      title: 'Show, don\'t tell: examples steer',
+      title: 'Two examples beat ten adjectives',
       minutes: 2,
       quick: `
         <p>Two or three well-chosen <strong>examples</strong> in the prompt beat paragraphs of
-        adjectives. Examples nail down format, tone, and — most valuable — <em>edge-case
-        handling</em>: include one example of a tricky input done right (empty input, mixed
-        language, a borderline judgment call) and the model generalizes the pattern. Update the
+        adjectives. They nail down format and tone, and most valuably they nail down <em>edge-case
+        handling</em>. Include one example of a tricky input done right, whether that's empty
+        input, mixed language or a borderline judgment call, and the model generalizes it. Update the
         examples when you see a new failure class.</p>`,
       fromZero: `
-        <p>Training a new teammate, you don't hand them ten pages of style guidance — you show
-        them three great past cases and one nightmare case handled well. Prompts work the same
-        way.</p>`,
+        <p>Training a new teammate, you don't hand over ten pages of style guidance. You show them
+        three strong past cases and one nightmare handled well. Prompts work the same way.</p>`,
       examTwist: `
         <p>Cue: "output format is inconsistent" or "handles unusual inputs badly." Adding
-        few-shot exemplars (especially of the failing case) is usually the intended fix —
-        cheaper than fine-tuning, more reliable than more adjectives. "Fine-tune a custom
+        few-shot exemplars, especially of the case that's failing, is usually the intended fix. It's
+        cheaper than fine-tuning and more reliable than piling on adjectives. "Fine-tune a custom
         model" for a formatting problem is the classic over-reach distractor.</p>`,
     },
     {
       id: 'let-it-think',
       domain: 'prompting',
-      title: 'Complex task? Let the model think',
+      title: 'Let the model think before it answers',
       minutes: 2,
       quick: `
-        <p>For multi-constraint reasoning — planning, math, tricky tradeoffs — give the model
-        room to <strong>work before answering</strong>: extended thinking where the API offers
+        <p>For multi-constraint reasoning, whether that's planning, math or a tricky tradeoff, give
+        the model room to <strong>work before answering</strong>: extended thinking where the API offers
         it, or prompts that request explicit reasoning steps first. Decomposing one giant ask
         into stages (analyze → plan → produce) buys the same effect. The tradeoff is real:
         thinking costs tokens and latency, so switch it on for hard problems, not everything.</p>`,
       fromZero: `
         <p>You wouldn't ask an architect to blurt a final design in one breath; you'd expect
-        working notes first. Same principle — and like billable hours, you spend deliberation
-        where the decision is expensive, not on routine lookups.</p>`,
+        working notes first. Same principle here, and much like billable hours, you spend the
+        deliberation where the decision is expensive rather than on routine lookups.</p>`,
       examTwist: `
         <p>Cue: "fails on complex multi-step reasoning but simple queries are fine." Intended
-        answer: enable extended thinking / step-wise reasoning or decompose the task — not
-        raising temperature (that adds randomness, not rigor) and not just a bigger context.</p>`,
+        answer: turn on extended thinking or step-wise reasoning, or decompose the task. Raising
+        temperature adds randomness rather than rigor, and a bigger context won't help either.</p>`,
     },
     {
       id: 'mcp-in-90s',
@@ -406,7 +409,7 @@ window.CCAF_CARDS = {
         Claude to outside tools and data. An <em>MCP server</em> wraps a system (a database, an
         API, your email) and exposes three things: <strong>tools</strong> Claude can call,
         <strong>resources</strong> it can read, and <strong>prompts</strong> it can reuse.
-        Claude discovers what a server offers at runtime — no hardcoding.</p>`,
+        Claude discovers what a server offers at runtime, with nothing hardcoded.</p>`,
       fromZero: `
         <p>Coming from Salesforce? Think of an MCP server like a <em>Named Credential plus an
         Apex callout wrapper</em> rolled into one reusable integration: it hides the messy
@@ -414,9 +417,9 @@ window.CCAF_CARDS = {
         calling out, though, it's Claude deciding <em>when</em> to use the integration based on
         your request.</p>`,
       examTwist: `
-        <p>The exam rarely says "MCP." It describes a scenario — <em>"an agent needs live access
-        to an internal inventory system through a standardized interface"</em> — and the options
-        blur MCP with function calling, RAG, and fine-tuning. Cue to watch for:
+        <p>The exam rarely says "MCP." It describes a scenario instead, something like <em>"an agent
+        needs live access to an internal inventory system through a standardized interface"</em>,
+        and then the options blur MCP with function calling, RAG and fine-tuning. Cue to watch for:
         <strong>standardized/reusable interface to external systems</strong> → MCP. One-off
         function the model calls → tool use. Injecting documents into context → RAG.</p>`,
     },
@@ -429,18 +432,18 @@ window.CCAF_CARDS = {
         <p>The model only knows what your tool tells it. Good tools have a <strong>name that
         says what they do</strong>, a description that says <em>when to use them</em> (and when
         not to), few and unambiguous parameters, and outputs trimmed to what the next decision
-        needs. One well-scoped tool beats three overlapping ones — overlap is where agents
-        pick wrong.</p>`,
+        needs. One well-scoped tool beats three overlapping ones, because overlap is exactly where
+        agents pick wrong.</p>`,
       fromZero: `
         <p>Write the tool description the way you'd brief a sharp new hire on a system they've
         never seen: what it's for, when to reach for it, what the fields mean. If two systems
-        do nearly the same thing, you'd tell the hire which one wins — your descriptions must
-        do the same.</p>`,
+        do nearly the same thing, you'd tell the hire which one wins; your descriptions have to do
+        the same.</p>`,
       examTwist: `
         <p>Cue: "the agent calls the wrong tool" or "passes bad parameters." The intended fix
-        is almost always <strong>improve the tool interface</strong> — clearer descriptions,
-        merged overlapping tools, tighter schemas — not scolding the model in the system
-        prompt and not more examples.</p>`,
+        is almost always <strong>improve the tool interface</strong>: clearer descriptions, merged
+        overlapping tools, tighter schemas. Scolding the model in the system prompt won't do it,
+        and nor will more examples.</p>`,
     },
     {
       id: 'tool-errors-teach',
@@ -448,7 +451,7 @@ window.CCAF_CARDS = {
       title: 'Error messages are prompts too',
       minutes: 2,
       quick: `
-        <p>Whatever a tool returns — success or failure — becomes <strong>text the model reads
+        <p>Whatever a tool returns, success or failure alike, becomes <strong>text the model reads
         and reasons over</strong>. "Error 400" teaches nothing; "date must be YYYY-MM-DD; you
         sent 14/08/2026" lets the agent fix itself on the next call. Design errors as
         instructions: say what went wrong, what valid looks like, and what to try instead.
@@ -456,12 +459,12 @@ window.CCAF_CARDS = {
       fromZero: `
         <p>Same philosophy as a good validation rule message: "Close date must be in the
         current fiscal quarter" fixes the record; "FIELD_CUSTOM_VALIDATION_EXCEPTION" creates a
-        support ticket. Agents are your fastest, most literal users — they act on exactly what
-        the error says.</p>`,
+        support ticket. Agents are your fastest and most literal users; they act on exactly what the
+        error says.</p>`,
       examTwist: `
         <p>Cue: "the agent gets stuck retrying a failing call." Look for the answer that
         <strong>improves the error surface</strong> (actionable message, recoverable design)
-        over adding retries, raising limits, or prompt nagging — the exam loves testing that
+        over adding retries, raising limits or nagging in the prompt. The exam loves testing whether
         you treat tool output as part of the conversation.</p>`,
     },
     {
@@ -476,35 +479,35 @@ window.CCAF_CARDS = {
         context with citations. Stuffing everything in is slower, costlier, and buries the
         signal; retrieval scales with your corpus while the context stays lean.</p>`,
       fromZero: `
-        <p>You don't attach the entire knowledge base to every case — you search it and quote
-        the two articles that match. RAG (retrieval-augmented generation) is that reflex,
+        <p>You don't attach the entire knowledge base to every case. You search it and quote the two
+        articles that match. RAG (retrieval-augmented generation) is that reflex,
         automated: search first, then answer from what you found.</p>`,
       examTwist: `
         <p>Cue: "documentation is far larger than the context window" or "answers must cite
         current internal docs." Intended answer: retrieval/RAG. Classic distractors:
-        fine-tuning (wrong — that bakes in stale knowledge, doesn't cite) and "use the model
-        with the biggest window" (delays the problem, doesn't solve it).</p>`,
+        fine-tuning, which bakes in stale knowledge and cites nothing, and "use the model with the
+        biggest window," which delays the problem instead of solving it.</p>`,
     },
     {
       id: 'compact-on-purpose',
       domain: 'context',
-      title: 'Compaction: forgetting on purpose',
+      title: 'Compaction is forgetting on purpose',
       minutes: 2,
       quick: `
         <p>Long sessions degrade because the window fills with stale turns and bulky tool
         output. <strong>Compaction</strong> fixes it: summarize the conversation so far, keep
         the goal, decisions, and recent state verbatim, and drop the rest. Do it proactively
-        at boundaries (a subtask finishing) rather than waiting for the hard limit — what
-        survives compaction is a design decision, not luck.</p>`,
+        at boundaries, when a subtask finishes, rather than waiting for the hard limit. What survives
+        compaction is a design decision rather than luck.</p>`,
       fromZero: `
-        <p>It's the shift-change handoff: the outgoing nurse doesn't recite eight hours of
-        events — they hand over a tight summary plus the current chart. The next shift works
+        <p>It's the shift-change handoff. The outgoing nurse doesn't recite eight hours of events;
+        they hand over a tight summary plus the current chart. The next shift works
         fine because the <em>right</em> things survived.</p>`,
       examTwist: `
         <p>Cue: "quality degrades as the conversation grows." Intended answer: summarize or
-        compact the history (or hand off to a fresh context with a summary). Distractors:
-        bigger model, higher temperature, more instructions — none address the filling
-        window.</p>`,
+        compact the history, or hand off to a fresh context with a summary. The distractors are a
+        bigger model, a higher temperature and more instructions, and not one of them touches
+        the filling window.</p>`,
     },
     {
       id: 'context-budget',
@@ -512,19 +515,19 @@ window.CCAF_CARDS = {
       title: 'The context window is a budget',
       minutes: 2,
       quick: `
-        <p>Everything Claude "sees" in a conversation — system prompt, history, tool results,
-        your files — must fit one <strong>context window</strong>. It's a hard budget: when it
+        <p>Everything Claude "sees" in a conversation, from the system prompt and history to tool
+        results and your files, has to fit one <strong>context window</strong>. It's a hard budget: when it
         runs low, something must be dropped, summarized, or compacted. Good agent design treats
         context as a resource to <em>spend deliberately</em>, not a bottomless log.</p>`,
       fromZero: `
         <p>Salesforce analogy: <em>governor limits</em>. You never design an Apex job assuming
-        unlimited SOQL calls; you design around the ceiling. Same instinct here — long agent
-        sessions need summarization, scoped retrieval, or sub-agents the way batch jobs need
+        unlimited SOQL calls; you design around the ceiling. Same instinct applies here, because long
+        agent sessions need summarization, scoped retrieval or sub-agents the way batch jobs need
         chunking.</p>`,
       examTwist: `
         <p>Watch for scenarios like <em>"the assistant's answers degrade in long support
-        conversations."</em> The four options will all sound plausible (bigger model! more
-        instructions!). The exam wants the <strong>context-management</strong> move:
+        conversations."</em> All four options will sound plausible, because a bigger model and more
+        instructions always do. The exam wants the <strong>context-management</strong> move:
         summarize/compact the history, or fetch only what's relevant instead of carrying
         everything forward.</p>`,
     },
@@ -536,17 +539,17 @@ window.CCAF_CARDS = {
 window.CCAF_STORY = {
   hero: {
     lead: `I'm a Salesforce consultant with development experience. By the time CCA-F was
-      announced I'd spent two years building outside my platform — OpenAI and Claude APIs
+      announced I'd spent two years building outside my platform: OpenAI and Claude APIs
       from 2023, then Claude Code in the terminal, custom MCP servers, sales-report MCPs,
       agentic solutions wired into Google Chat and Teams, experiments with CrewAI and
       Cursor. I felt ready. I was also wrong about what the exam would be.`,
-    why: `I didn't sit CCA-F to stay a developer. I still love building — but I wanted to
+    why: `I didn't sit CCA-F to stay a developer. I still love building, but I wanted to
       understand a platform's <em>system</em>: how it operates, where its limits are, and
       how that differs from Salesforce's multitenant world. No other system mirrors
       Salesforce; each has its own architecture, tools, and conventions, and those are the
       things only an architect can teach a peer.`,
     result: `Scored <strong>977/1000</strong>. The real result was quieter than the number:
-      the relief of seeing that it isn't <em>only</em> Salesforce I can build on — any system
+      the relief of seeing that it isn't <em>only</em> Salesforce I can build on. Any system
       I can understand, I can build with Claude Code. That's what this guide is for. Whatever
       platform you're coming from, everyone starts in the same boat. This is a
       <strong>"you can do it"</strong> guide, not an "I did it" one.`,
@@ -554,8 +557,8 @@ window.CCAF_STORY = {
   waypoints: [
     {
       stepId: 'blueprint',
-      title: 'Blocker 1 — "Are there enough good sources?"',
-      body: `Less of a wall than I expected — the official courses were more than enough for the
+      title: 'Blocker 1: "Are there enough good sources?"',
+      body: `Less of a wall than I expected: the official courses were more than enough for the
         basics, and I ran a peer-group prep in two phases (Claude Code for building, then Claude
         Code for agentic work), teaching MCP sessions internally along the way. What no course
         gave me was the <strong>hands-on</strong>: build something real before you sit the exam.
@@ -564,8 +567,8 @@ window.CCAF_STORY = {
     },
     {
       stepId: 'reading',
-      title: 'Blocker 2 — the mindset shift, and the day the questions changed',
-      body: `Crossing from CRM thinking to agent-native architecture was the hardest part —
+      title: 'Blocker 2: the mindset shift, and the day the questions changed',
+      body: `Crossing from CRM thinking to agent-native architecture was the hardest part,
         and I hadn't been "prepping" at all; there was never a moment I thought "I'll take the
         exam." I'd just been building since 2023. That accidental practice was what made the
         concepts click. Then the exam itself moved the goalposts: <strong>the scenarios were
@@ -575,10 +578,10 @@ window.CCAF_STORY = {
     },
     {
       stepId: 'drills',
-      title: 'Blocker 3 — the terminology and limitations wall',
+      title: 'Blocker 3: the terminology and limitations wall',
       body: `Salesforce has one glossary; you memorize it once. Here you're not learning one
-        system, you're building across many — MCP, the Agent SDK, context engineering, context
-        loading, skills — and each brings its own vocabulary and its own limits that matter in
+        system, you're building across many (MCP, the Agent SDK, context engineering, context
+        loading, skills), and each brings its own vocabulary and its own limits that matter in
         practice. What made it stick was building with all of them: <em>Lumi</em>, my family
         co-pilot; <em>Nexus</em>, my chief of staff; <em>Sift</em>, an MCP server for my email;
         and <em>Sotto</em>, voice-AI dictation. I'm working to open-source all of them, with
@@ -593,7 +596,7 @@ window.CCAF_STORY = {
    minutes here = rough build effort, not reading time. */
 const MISSION_LANES = {
   zeroLabel: 'Mission outline',
-  twistLabel: 'Self-check — can you answer these?',
+  twistLabel: 'Self-check: can you answer these?',
   markLabels: ['Mark mission complete', '✓ Mission complete'],
 };
 
@@ -806,11 +809,11 @@ window.CCAF_CARDS.labs = [
   {
     id: 'mission-mcp-server',
     minutes: 60,
-    title: 'Mission 1 — Ship a minimal MCP server',
+    title: 'Mission 1: Ship a minimal MCP server',
     quick: `
       <p><strong>Build the thing the exam keeps describing.</strong> Create a tiny MCP server
-      that exposes one or two tools over your own data — a notes lookup, a "today's schedule"
-      reader, anything real to you — and connect it to Claude Code. The moment you watch
+      that exposes one or two tools over your own data (a notes lookup, a "today's schedule"
+      reader, anything that's real to you) and connect it to Claude Code. The moment you watch
       Claude discover your tools at runtime and choose when to call them, the MCP questions
       stop being abstract.</p>`,
     fromZero: `
@@ -819,7 +822,7 @@ window.CCAF_CARDS.labs = [
       2. Define one tool with a <em>deliberately good</em> name, description, and 1–2 typed
       parameters.<br>
       3. Register the server in Claude Code's MCP configuration and restart the session.<br>
-      4. Ask a question that should trigger your tool — then one that shouldn't. Watch the
+      4. Ask a question that should trigger your tool, then one that shouldn't. Watch the
       choice happen.<br>
       5. Break it on purpose: blur the description ("does stuff with data") and see how tool
       selection degrades.</p>`,
@@ -833,7 +836,7 @@ window.CCAF_CARDS.labs = [
   {
     id: 'mission-configure-project',
     minutes: 45,
-    title: 'Mission 2 — Configure a project like you mean it',
+    title: 'Mission 2: Configure a project like you mean it',
     quick: `
       <p><strong>Turn a bare repo into a governed workspace.</strong> Take any project you own
       and give it the full Claude Code treatment: a CLAUDE.md with binding rules, one hook
@@ -842,33 +845,33 @@ window.CCAF_CARDS.labs = [
     fromZero: `
       <p>1. Write a CLAUDE.md under one page: commands, conventions, two or three hard
       rules.<br>
-      2. Add a PreToolUse hook that blocks an action you never want (e.g., editing a
-      generated folder) — then try to make Claude do it anyway.<br>
+      2. Add a PreToolUse hook that blocks an action you never want, say editing a generated
+      folder, then try to make Claude do it anyway.<br>
       3. Package a repeated instruction set as a skill and invoke it.<br>
       4. Compare: which of your CLAUDE.md rules got followed <em>probabilistically</em>, and
       which did the hook enforce <em>absolutely</em>?</p>`,
     examTwist: `
       <p>Which layer would you use for "prefer small functions" versus "never commit to
-      main"? Why is a one-page CLAUDE.md better than a ten-page one? When Claude ignored a
-      soft rule, what was your fix — louder prose, or a mechanism?</p>`,
+      main"? Why is a one-page CLAUDE.md better than a ten-page one? When Claude ignored a soft
+      rule, what was your fix: louder prose, or a mechanism?</p>`,
     ...MISSION_LANES,
   },
   {
     id: 'mission-subagent-fanout',
     minutes: 45,
-    title: 'Mission 3 — Fan out with subagents',
+    title: 'Mission 3: Fan out with subagents',
     quick: `
-      <p><strong>Feel why context isolation matters.</strong> Give Claude Code a genuinely
-      wide task over a codebase — "audit every module for X" or "research these five
-      questions" — and have it dispatch subagents. Then try the same task in one single
-      context and compare quality, speed, and what got forgotten.</p>`,
+      <p><strong>Feel why context isolation matters.</strong> Give Claude Code a properly
+      wide task over a codebase, something like "audit every module for X" or "research these
+      five questions," and have it dispatch subagents. Then run the same task in one single
+      context and compare quality, speed and what got forgotten.</p>`,
     fromZero: `
       <p>1. Pick a task that fans out naturally (multi-file audit, multi-question
       research).<br>
       2. Run it with subagents; note how each returns a <em>summary</em>, not a
       transcript.<br>
       3. Re-run single-context; watch for drift, truncation, or forgotten early findings.<br>
-      4. Deliberately over-split once — ten subagents for a two-file job — and feel the
+      4. Over-split on purpose once, ten subagents for a two-file job, and feel the
       coordination tax.</p>`,
     examTwist: `
       <p>What information died at each handoff, and did it matter? At what task width did
@@ -879,22 +882,22 @@ window.CCAF_CARDS.labs = [
   {
     id: 'mission-context-cliff',
     minutes: 40,
-    title: 'Mission 4 — Find the context cliff',
+    title: 'Mission 4: Find the context cliff',
     quick: `
       <p><strong>Degrade a session on purpose, then rescue it.</strong> Work one long Claude
-      Code session until answers get vague or early decisions get forgotten — then practice
-      the rescue: compact the conversation into a tight summary and hand off to a fresh
-      session that picks up seamlessly. You'll never fear long sessions again once you've
-      done a clean handoff.</p>`,
+      Code session until answers get vague or early decisions go missing, then practice the
+      rescue: compact the conversation into a tight summary and hand off to a fresh session
+      that picks up exactly where you left off. Long sessions stop being frightening once
+      you've done one clean handoff.</p>`,
     fromZero: `
       <p>1. Start a feature conversation and keep piling on: big file reads, verbose tool
       output, topic shifts.<br>
-      2. Note the first symptom of degradation — what got forgotten first?<br>
+      2. Note the first symptom of degradation. What went missing first?<br>
       3. Ask for a handoff summary: goal, decisions made, current state, next steps.<br>
       4. Open a fresh session seeded only with that summary; continue the work.<br>
       5. Compare what survived your summary versus what you wish had.</p>`,
     examTwist: `
-      <p>Which degraded first — instructions, early facts, or recent detail? What belongs
+      <p>Which degraded first: instructions, early facts, or recent detail? What belongs
       verbatim in a compaction summary and what can be lossy? Why is compacting at a task
       boundary better than at the hard limit?</p>`,
     ...MISSION_LANES,
@@ -902,16 +905,16 @@ window.CCAF_CARDS.labs = [
   {
     id: 'mission-great-restructure',
     minutes: 90,
-    title: 'Mission 5 — The great restructure',
+    title: 'Mission 5: The great restructure',
     quick: `
       <p><strong>The judgment the exam actually tests.</strong> Take a messy small project
       (or deliberately mess one up) and have Claude Code plan and execute a structural
-      revamp — reorganize files, extract modules, update imports. Your job isn't typing; it's
+      revamp: reorganize files, extract modules, update imports. Your job isn't typing, it's
       <em>reviewing the plan, constraining the blast radius, and deciding what needs a
       gate</em>. This is architecture taste, practiced.</p>`,
     fromZero: `
       <p>1. Choose a project where restructuring is safe (or make a copy).<br>
-      2. Ask for a restructure <em>plan first</em> — make Claude propose before touching
+      2. Ask for a restructure <em>plan first</em>, so Claude proposes before it touches
       anything.<br>
       3. Challenge one choice in the plan; make it defend or revise.<br>
       4. Execute in stages, reviewing diffs between stages; keep tests (or a smoke script)
