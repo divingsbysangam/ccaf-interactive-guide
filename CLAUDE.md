@@ -51,6 +51,20 @@ Five-step **Journey Map** as the landing page (blueprint → reading → labs �
 
 * All exam-style questions, blocker stories, and adapted passages require Sangam's review before publishing.
 
+* **The footer's legal disclosure is load-bearing — never remove or soften it.** Independent and unofficial, not affiliated with / endorsed by / sponsored by Anthropic, all scenarios original, no real exam content and no dumps, trademarks acknowledged. Alongside it sits the single monitored feedback route, `mailto:sangameshgella@divingsbysangam.com` (email, not LinkedIn DM — DMs from non-connections go unread). Both live in static `index.html` outside the render path, so `scripts/smoke-test.js` asserts them by reading the file from disk; that guard exists because the DOM harness cannot see them.
+
+* **Exam facts on Sangam's authority (he sat it, 977/1000):** pass mark **720/1000**, certification **valid 12 months**, and the exam is **single-answer multiple choice with no multiple-response items**. A smoke assertion fails the build if anyone ever describes multiple-response items. Re-verify all three at the quarterly pass.
+
+## Voice (binding — load the skill before editing prose)
+
+**All guide prose is governed by the `sangam-writing-style` skill** (user level, `~/.claude/skills/sangam-writing-style/`). It was applied across the whole guide on 2026-08-21 in commit `b2cc509`. **Invoke it before touching any prose in `js/content.js`, the copy in `index.html`, or the UI strings in `js/app.js`** — otherwise a session will quietly rewrite Sangam's voice back into generic assistant prose, em dashes first.
+
+- **The rules that bite hardest here:** zero em dashes · contractions always · no rule-of-three · no parataxis runs (three or more short declaratives) · no perfect parallelism across sibling blocks · at most one earned fragment · effectively no exclamations · statement headings, never questions.
+- **In scope:** all 29 cards (blueprint, reading, labs), the hero, the waypoints, and every UI string. **Out of scope by Sangam's instruction:** `CCAF_DRILLS`, `CCAF_MOCK_SAMPLES`, `CCAF_MOCK_LINKS`. Those still carry ~31 em dashes on purpose — leave them.
+- **Sangam's own words** (hero paragraphs, the three blocker waypoints) take punctuation fixes only. Never reword them; they are his, and `needs-sangam` still applies.
+- **Three standing exceptions to the zero-em-dash rule:** "Claude Certified Architect — Foundations" (the certification's registered name), the "— Sangam" signature under the hero, and code comments. **"Journey Map" also keeps its name** even though "journey" is on the skill's kill-list — renaming the site's core navigation is a product decision, not a copy edit. Lowercase prose uses of the word are gone.
+- Audit any prose change with the counts the skill's checklist implies (em dashes, banned words, contractions, exclamations) before committing.
+
 ## Workflow notes
 
 * Sangam handles the Vercel account/domain transfer in parallel; it gates deployment (DIV-34) only — never local build work.
